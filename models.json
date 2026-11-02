@@ -1,0 +1,224 @@
+[
+  {
+    "id": "1",
+    "title": "Дачный домик 8x6",
+    "size": "8 × 6",
+    "area": 48.0,
+    "category": "Дачные домики",
+    "categoryKey": "homes",
+    "prices": [
+      1021800.0,
+      1138700.0,
+      1430200.0
+    ],
+    "editions": [
+      {
+        "name": "ХОЛОДНЫЙ КОНТУР",
+        "price": 1021800.0
+      },
+      {
+        "name": "ТЁПЛЫЙ КОНТУР",
+        "price": 1138700.0
+      },
+      {
+        "name": "С ЧИСТОВОЙ ОТДЕЛКОЙ",
+        "price": 1430200.0
+      }
+    ],
+    "description": "Общий размер-8x6 м<br />Терасса-2x6 м<br />Высота-2200х3700 мм",
+    "images": [
+      "assets/house-1-1.webp",
+      "assets/house-1-2.webp",
+      "assets/house-1-3.webp",
+      "assets/house-1-4.webp",
+      "assets/house-1-5.webp"
+    ],
+    "source": "https://bytovki-vsem.ru/test-tovarov/tproduct/2195366491-986772195172-dachnii-domik-8x6-",
+    "sourceUid": "986772195172"
+  },
+  {
+    "id": "2",
+    "title": "Дачная бытовка 6x5",
+    "size": "6 × 5",
+    "area": 30.0,
+    "category": "Дачные бытовки",
+    "categoryKey": "products",
+    "prices": [
+      465400.0,
+      514800.0,
+      644000.0
+    ],
+    "editions": [
+      {
+        "name": "ХОЛОДНЫЙ КОНТУР",
+        "price": 465400.0
+      },
+      {
+        "name": "ТЁПЛЫЙ КОНТУР",
+        "price": 514800.0
+      },
+      {
+        "name": "С ЧИСТОВОЙ ОТДЕЛКОЙ",
+        "price": 644000.0
+      }
+    ],
+    "description": "Общий размер-6x5 м<br />Жилая-4x5 м<br />Терасса-2x5 м<br />Высота-2200х2950 мм",
+    "images": [
+      "assets/house-2-1.webp",
+      "assets/house-2-2.webp",
+      "assets/house-2-3.webp",
+      "assets/house-2-4.webp",
+      "assets/house-2-5.webp"
+    ],
+    "source": "https://bytovki-vsem.ru/tproduct/3568286901-325140575392-dachnaya-bitovka-6x5",
+    "sourceUid": "325140575392"
+  },
+  {
+    "id": "3",
+    "title": "Каркасный дом 9x7",
+    "size": "9 × 7",
+    "area": 63.0,
+    "category": "Каркасные дома",
+    "categoryKey": "frame",
+    "prices": [
+      1793400.0,
+      2166500.0,
+      2641777.0
+    ],
+    "editions": [
+      {
+        "name": "ХОЛОДНЫЙ КОНТУР",
+        "price": 1793400.0
+      },
+      {
+        "name": "ТЁПЛЫЙ КОНТУР",
+        "price": 2166500.0
+      },
+      {
+        "name": "С ЧИСТОВОЙ ОТДЕЛКОЙ",
+        "price": 2641777.0
+      }
+    ],
+    "description": "Общий размер-9x7 м<br />Жилая-7х7 м<br />Терасса-2x7 м<br />Высота-2400х3450 мм",
+    "images": [
+      "assets/house-3-1.webp",
+      "assets/house-3-2.webp",
+      "assets/house-3-3.webp",
+      "assets/house-3-4.webp",
+      "assets/house-3-5.webp"
+    ],
+    "source": "https://bytovki-vsem.ru/test-tovarov/tproduct/2195366491-349263484562-karkasnii-dom-9x7-",
+    "sourceUid": "349263484562"
+  },
+  {
+    "id": "4",
+    "title": "Дачный домик 8x7",
+    "size": "8 × 7",
+    "area": 56.0,
+    "category": "Дачные домики",
+    "categoryKey": "homes",
+    "prices": [
+      1406000.0,
+      1602800.0,
+      1962700.0
+    ],
+    "editions": [
+      {
+        "name": "ХОЛОДНЫЙ КОНТУР",
+        "price": 1406000.0
+      },
+      {
+        "name": "ТЁПЛЫЙ КОНТУР",
+        "price": 1602800.0
+      },
+      {
+        "name": "С ЧИСТОВОЙ ОТДЕЛКОЙ",
+        "price": 1962700.0
+      }
+    ],
+    "description": "Общий размер-8x7 м<br />Жилая-6х7 м<br />Терасса-2x7 м<br />Высота-2200х3400 мм",
+    "images": [
+      "assets/house-4-1.webp",
+      "assets/house-4-2.webp",
+      "assets/house-4-3.webp",
+      "assets/house-4-4.webp",
+      "assets/house-4-5.webp"
+    ],
+    "source": "https://bytovki-vsem.ru/test-tovarov/tproduct/2195366491-430750237162-dachnii-domik-8x7-",
+    "sourceUid": "430750237162"
+  },
+  {
+    "id": "5",
+    "title": "Дачная бытовка 6x6",
+    "size": "6 × 6",
+    "area": 36.0,
+    "category": "Дачные бытовки",
+    "categoryKey": "products",
+    "prices": [
+      541600.0,
+      603200.0,
+      753900.0
+    ],
+    "editions": [
+      {
+        "name": "ХОЛОДНЫЙ КОНТУР",
+        "price": 541600.0
+      },
+      {
+        "name": "ТЕПЛЫЙ КОНТУР",
+        "price": 603200.0
+      },
+      {
+        "name": "С ЧИСТОВОЙ ОТДЕЛКОЙ",
+        "price": 753900.0
+      }
+    ],
+    "description": "Общий размер-6x6 м<br />Жилая-4х6 м<br />Терасса-2x6 м<br />Высота-2200х3100 мм",
+    "images": [
+      "assets/house-5-1.webp",
+      "assets/house-5-2.webp",
+      "assets/house-5-3.webp",
+      "assets/house-5-4.webp",
+      "assets/house-5-5.webp"
+    ],
+    "source": "https://bytovki-vsem.ru/test-tovarov/tproduct/2195366491-109607080792-dachnaya-bitovka-6x6",
+    "sourceUid": "109607080792"
+  },
+  {
+    "id": "6",
+    "title": "Каркасный дом 10x6",
+    "size": "10 × 6",
+    "area": 60.0,
+    "category": "Каркасные дома",
+    "categoryKey": "frame",
+    "prices": [
+      1643300.0,
+      2006200.0,
+      2453000.0
+    ],
+    "editions": [
+      {
+        "name": "ХОЛОДНЫЙ КОНТУР",
+        "price": 1643300.0
+      },
+      {
+        "name": "ТЁПЛЫЙ КОНТУР",
+        "price": 2006200.0
+      },
+      {
+        "name": "С ЧИСТОВОЙ ОТДЕЛКОЙ",
+        "price": 2453000.0
+      }
+    ],
+    "description": "Общий размер-10x6 м<br />Жилая-8х6 м<br />Терасса-2x6 м<br />Высота-2400х3400 мм",
+    "images": [
+      "assets/house-6-1.webp",
+      "assets/house-6-2.webp",
+      "assets/house-6-3.webp",
+      "assets/house-6-4.webp",
+      "assets/house-6-5.webp"
+    ],
+    "source": "https://bytovki-vsem.ru/test-tovarov/tproduct/2195366491-240085944332-karkasnii-dom-10x6-",
+    "sourceUid": "240085944332"
+  }
+]
