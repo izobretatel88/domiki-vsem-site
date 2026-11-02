@@ -24,7 +24,10 @@ function renderCatalog(){const list=models.filter(m=>(state.category==='all'||m.
 
 function updateComparison(){
  const chosen=models.filter(m=>comparison.has(m.id));
- $('#compare-tray').hidden=!chosen.length;
+ if(chosen.length!==2)comparisonOpen=false;
+ const showTray=!!chosen.length&&!comparisonOpen&&!$('#home-page').hidden;
+ $('#compare-tray').hidden=!showTray;
+ document.documentElement.classList.toggle('has-comparison-tray',showTray);
  $('#compare-count').textContent=chosen.length===1?'Выбран один дом. Добавьте второй для сравнения.':'Выбраны два дома. Сравните планировки и стоимость.';
  $('#compare-open').disabled=chosen.length!==2;
  $$('[data-compare]').forEach(b=>{const selected=comparison.has(b.dataset.compare);b.setAttribute('aria-pressed',selected);b.disabled=!selected&&chosen.length===2;b.textContent=selected?'Добавлен в сравнение':'Добавить к сравнению';b.setAttribute('aria-label',(selected?'Убрать из сравнения: ':'Сравнить: ')+models.find(m=>m.id===b.dataset.compare).title);});
@@ -36,7 +39,7 @@ function updateComparison(){
 }
 document.addEventListener('click',e=>{const pick=e.target.closest('[data-compare],[data-remove-compare]');if(!pick)return;const id=pick.dataset.compare||pick.dataset.removeCompare;if(comparison.has(id))comparison.delete(id);else if(comparison.size<2)comparison.add(id);const removedFromTable=!!pick.dataset.removeCompare;updateComparison();if(removedFromTable)$('#compare-count').focus();});
 $('#compare-open').addEventListener('click',()=>{comparisonOpen=true;updateComparison();$('#house-comparison').scrollIntoView({behavior:'instant'});$('#comparison-title').focus({preventScroll:true});});
-$('#compare-clear').addEventListener('click',()=>{comparison.clear();comparisonOpen=false;updateComparison();$('#catalog-title').setAttribute('tabindex','-1');$('#catalog-title').focus({preventScroll:true});});
+$('#compare-clear').addEventListener('click',()=>{comparison.clear();comparisonOpen=false;updateComparison();$('#catalog-title').setAttribute('tabindex','-1');$('#catalog-title').focus();});
 $$('[data-category]').forEach(b=>b.addEventListener('click',()=>{state.category=b.dataset.category;$$('[data-category]').forEach(x=>{const active=x===b;x.classList.toggle('active',active);x.setAttribute('aria-pressed',active)});renderCatalog()}));
 $('#area-filter').addEventListener('change',e=>{state.area=e.target.value;renderCatalog()});
 $('#reset-filters').addEventListener('click',()=>{state.category='all';state.area='all';$('#area-filter').value='all';$$('[data-category]').forEach(b=>{const active=b.dataset.category==='all';b.classList.toggle('active',active);b.setAttribute('aria-pressed',active)});renderCatalog()});
@@ -59,7 +62,7 @@ function startGalleryLoad(){clearTimeout(galleryTimer);$('.gallery-main').setAtt
 function finishGalleryLoad(){clearTimeout(galleryTimer);$('.gallery-main')?.setAttribute('aria-busy','false');if($('#gallery-status'))$('#gallery-status').textContent='';}
 function setupGallery(){const img=$('#gallery-image');img.decoding='async';img.addEventListener('load',()=>{if(img===$('#gallery-image'))finishGalleryLoad()});img.addEventListener('error',()=>{if(img!==$('#gallery-image'))return;finishGalleryLoad();$('#gallery-status').textContent='Изображение не загрузилось. Повторите загрузку или выберите другой вид.';$('#gallery-retry').hidden=false;});$('#gallery-retry').addEventListener('click',()=>{startGalleryLoad();img.src=state.detail.images[state.gallery]});}
 function setGallery(i){const m=state.detail;state.gallery=(i+m.images.length)%m.images.length;houseChoices.set(m.id,{edition:state.edition,gallery:state.gallery});$('.gallery-main').classList.toggle('is-plan',state.gallery===1);$('#plan-full').hidden=state.gallery!==1;startGalleryLoad();$('#gallery-image').src=m.images[state.gallery];if($('#gallery-image').complete&&$('#gallery-image').naturalWidth)finishGalleryLoad();$('#gallery-image').alt=m.title+(state.gallery===1?', планировка':', вид '+(state.gallery+1));$('#gallery-position').textContent=(state.gallery+1)+' / '+m.images.length;$$('[data-view]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.view===(state.gallery===1?'plan':'facade')));$$('[data-gallery]').forEach(b=>{const active=Number(b.dataset.gallery)===state.gallery;b.classList.toggle('active',active);b.setAttribute('aria-pressed',active)});}
-function route(){clearTimeout(galleryTimer);const hash=location.hash;const match=hash.match(/^#house-(\d+)$/);const detail=!!match;$('#home-page').hidden=detail;$('#detail-page').hidden=!detail;if(detail){renderDetail(match[1]);window.scrollTo({top:0,behavior:'instant'});document.title=(state.detail?.title||'Дом')+' — Домики-Всем';}else{document.title='Домики-Всем — дома для жизни за городом';const target=document.getElementById(hash.slice(1));if(target){requestAnimationFrame(()=>target.scrollIntoView({behavior:'instant'}))}else window.scrollTo({top:0,behavior:'instant'});}$('.mobile-nav').hidden=true;$('.menu-button').setAttribute('aria-expanded','false');}
+function route(){clearTimeout(galleryTimer);const hash=location.hash;const match=hash.match(/^#house-(\d+)$/);const detail=!!match;$('#home-page').hidden=detail;$('#detail-page').hidden=!detail;updateComparison();if(detail){renderDetail(match[1]);window.scrollTo({top:0,behavior:'instant'});document.title=(state.detail?.title||'Дом')+' — Домики-Всем';}else{document.title='Домики-Всем — дома для жизни за городом';const target=document.getElementById(hash.slice(1));if(target){requestAnimationFrame(()=>target.scrollIntoView({behavior:'instant'}))}else window.scrollTo({top:0,behavior:'instant'});}$('.mobile-nav').hidden=true;$('.menu-button').setAttribute('aria-expanded','false');}
 window.addEventListener('hashchange',route);
 $('.menu-button').addEventListener('click',()=>{const menu=$('.mobile-nav');menu.hidden=!menu.hidden;$('.menu-button').setAttribute('aria-expanded',!menu.hidden);});
 $('.theme-toggle').addEventListener('click',()=>{const current=document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.dataset.theme=current==='dark'?'light':'dark';});
@@ -120,3 +123,5 @@ function selectReadiness(button){const i=Number(button.dataset.readiness);$$('[d
 $$('[data-readiness]').forEach(b=>{b.addEventListener('click',()=>selectReadiness(b));b.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();selectReadiness(b);}});});
 
 $('#readiness-catalog').addEventListener('click',()=>{const index=Number($('[data-readiness][aria-pressed=\"true\"]').dataset.readiness);applyCatalogEdition(index);});
+
+$('#compare-return').addEventListener('click',()=>{comparisonOpen=false;updateComparison();$('#catalog-title').setAttribute('tabindex','-1');$('#catalog-title').focus();});
