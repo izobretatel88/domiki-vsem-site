@@ -1,4 +1,6 @@
 'use strict';
+document.addEventListener('pointerdown',()=>{document.documentElement.dataset.interaction='pointer'},{capture:true});
+document.addEventListener('keydown',()=>{document.documentElement.dataset.interaction='keyboard'},{capture:true});
 let models=[];
 const $=(s,root=document)=>root.querySelector(s);
 const $$=(s,root=document)=>[...root.querySelectorAll(s)];
