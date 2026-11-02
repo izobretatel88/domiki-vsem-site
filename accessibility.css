@@ -43,3 +43,5 @@ button:active,.filter:active{filter:brightness(.9)}
 .gallery-feedback{min-height:28px;padding-top:8px;font-size:13px;color:var(--muted)}.gallery-feedback .text-button{font-size:14px}.form-field input[aria-invalid=true]{border:2px solid #a13c2e}.gallery-main[aria-busy=true]{cursor:progress}@media(max-width:768px){.gallery-feedback{font-size:12px}}
 
 .gallery-main.is-plan .image-caption{display:none}.plan-full{font-size:14px;margin-top:8px}
+
+.package-option-delta{display:block;font-size:12px;font-weight:600;line-height:1.7;color:var(--accent);margin-top:8px}.package-option.selected .package-option-delta{color:var(--accent)}.readiness-summary #readiness-catalog{font-size:14px;line-height:1.7;max-width:230px}.package-option-title>span:first-child{min-width:0}.package-option-title{align-items:flex-start}.package-option-price{flex-shrink:0;font-variant-numeric:tabular-nums}@media(max-width:768px){.readiness-summary #readiness-catalog{max-width:none}.package-option-title{gap:6px 14px}.package-option-delta{font-size:12px}}
