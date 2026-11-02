@@ -45,7 +45,13 @@ window.addEventListener('hashchange',route);
 $('.menu-button').addEventListener('click',()=>{const menu=$('.mobile-nav');menu.hidden=!menu.hidden;$('.menu-button').setAttribute('aria-expanded',!menu.hidden);});
 $('.theme-toggle').addEventListener('click',()=>{const current=document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.dataset.theme=current==='dark'?'light':'dark';});
 const productionLabels={drying:'Сушильная камера',treatment:'Ванна для защитной обработки древесины',painting:'Покрасочный цех',warehouse:'Склад материалов под навесом'};
-$$('[data-production]').forEach(b=>b.addEventListener('click',()=>{$$('[data-production]').forEach(x=>{const active=x===b;x.classList.toggle('active',active);x.setAttribute('aria-pressed',active)});$('#production-image').src='assets/'+b.dataset.production+'.webp';$('#production-image').alt=productionLabels[b.dataset.production]+' на производстве Домики-Всем';}));
+const productionQuestions={
+ drying:['Из чего соберут ваш дом?','Уточните, из какого пиломатериала будет собран дом и как контролируют его влажность. Попросите зафиксировать материал в спецификации.'],
+ treatment:['Как обработают древесину?','Попросите указать название защитного состава, способ обработки и перечень обрабатываемых элементов в спецификации вашего дома.'],
+ painting:['Какая отделка войдёт в цену?','Уточните, какие поверхности будут окрашены, каким составом и где выполнят работу. Согласуйте цвет и состав отделки до заказа.'],
+ warehouse:['Как материалы дождутся сборки?','Обсудите условия хранения и порядок защиты материалов на время доставки и сборки. Фотография показывает склад из архива компании.']
+};
+$$('[data-production]').forEach(b=>b.addEventListener('click',()=>{$$('[data-production]').forEach(x=>{const active=x===b;x.classList.toggle('active',active);x.setAttribute('aria-pressed',active)});$('#production-image').src='assets/'+b.dataset.production+'.webp';$('#production-image').alt=productionLabels[b.dataset.production]+' на производстве Домики-Всем';const question=productionQuestions[b.dataset.production];$('#production-question-title').textContent=question[0];$('#production-question-copy').textContent=question[1];}));
 function openQuiz(id=null,fromDetail=false,purpose=null){contactDrafts={};lastFocused=document.activeElement;quiz={purpose,model:id,edition:fromDetail?state.edition:null,area:id?(models.find(m=>m.id===id).area<40?'До 40 м²':models.find(m=>m.id===id).area<60?'40–60 м²':'60–80 м²'):'',season:'',method:'Telegram',name:'',contact:'',canCall:false,step:purpose?3:id?1:0};quizDialog.showModal();document.body.style.overflow='hidden';renderQuiz();}
 function closeQuiz(){quizDialog.close();}
 $$('[data-quiz]').forEach(b=>b.addEventListener('click',()=>openQuiz()));$('.close-dialog').addEventListener('click',closeQuiz);quizDialog.addEventListener('close',()=>{document.body.style.overflow='';lastFocused?.focus()});
