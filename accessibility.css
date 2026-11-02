@@ -1,0 +1,41 @@
+/* UI/UX Pro Max review: readable content and comfortable pointer targets. */
+:root{--text-body:16px;--text-small:14px;--text-caption:12px}
+body{font-size:var(--text-body)}
+.icon-button{min-width:44px;min-height:44px;flex-shrink:0}
+.text-button{min-height:44px;font-size:var(--text-small);white-space:normal}
+button,select,summary{touch-action:manipulation}
+select,.filter{min-height:44px;font-size:var(--text-small)}
+.desktop-nav{font-size:13px;align-items:center}
+.desktop-nav a{display:inline-flex;align-items:center;min-height:44px}
+.eyebrow,.hero-copy .eyebrow,.brand-caption,.hero-bottom,.catalog-meta,.price-caption,.model-specs,.model-type,.package-index,.readiness-label,.image-caption,.quiz-step-label,.quiz-demo,.footer-bottom,.concept-link{font-size:var(--text-caption)}
+.section-intro,.production-top>p,.package-columns p,.package-columns ul,.readiness-summary p,.package-footnote p,.production-tab-copy,.process-list p,.faq-list p,.final-section p,.footer-top p,.photo-disclosure,.detail-heading>p,.package-option-description,.detail-total>p,.quiz-description,.info-content p{font-size:var(--text-small);line-height:1.75}
+.faq-list summary{font-size:16px;min-height:44px;align-items:center}
+.footer-top nav{gap:8px}
+.footer-top nav a,.footer-top nav button,.concept-link{display:inline-flex;align-items:center;min-height:44px;font-size:var(--text-small)}
+.detail-packages>p{font-size:14px;line-height:1.7;margin-bottom:16px}
+.package-option-title{font-size:14px;line-height:1.5}
+.form-field input{font-size:16px;min-height:48px}
+.result-list{font-size:14px;overflow-wrap:anywhere}
+.check-label input{min-width:24px;min-height:24px;margin:0;accent-color:var(--accent)}
+.check-label{min-height:44px;align-items:center}
+:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+.hero-copy :focus-visible,.production-section :focus-visible{outline-color:#f1f3ed}
+:root[data-theme=dark] .hero-copy :focus-visible{outline-color:#f1f3ed}
+button:active,.filter:active{filter:brightness(.9)}
+.gallery-views,.category-tabs,.contact-tabs{gap:8px}
+@media(max-width:768px){
+ .hero-lead,.section-intro,.production-top>p,.package-columns p,.readiness-summary p,.production-tab-copy,.process-list p,.faq-list p,.final-section p,.quiz-description,.info-content p{font-size:16px;line-height:1.7}
+ .category-tabs .filter{font-size:13px;min-height:46px}
+ .hero-copy .button,.hero-copy .text-button,.header-actions>.outline,.model-price .text-button{font-size:12px;min-height:44px}
+ .model-price{flex-wrap:wrap;gap:12px}
+ .model-specs,.catalog-meta,.price-caption,.model-type,.package-columns ul,.package-footnote p,.detail-total>p,.photo-disclosure,.quiz-demo{font-size:12px}
+ .model-specs{flex-wrap:wrap;gap:8px 18px}
+ .production-visit .text-button,.catalog-help .text-button,.footer-top nav,.footer-top .text-button{font-size:14px}
+ .quiz-model span{font-size:12px;line-height:1.5}
+ .result-list{font-size:14px;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr)}
+ .detail-heading>p{font-size:14px}
+ .package-option-title{flex-wrap:wrap;font-size:14px}
+ .package-option-description{font-size:14px}
+ .footer-bottom{font-size:12px}
+ .hero-visual .image-caption{font-size:10px}
+}
