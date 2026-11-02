@@ -1,0 +1,54 @@
+/* Pine, porcelain and copper: a clearer material palette for the house catalogue. */
+:root,:root[data-theme=light]{
+ --bg:#fbfaf7;--surface:#ffffff;--ink:#102e25;--muted:#415b50;
+ --line:#cbd7cf;--accent:#14533e;--accent-hover:#0e402f;
+ --tint:#eaf0eb;--forest:#0d3a2d;--seed:#f1b58e;
+ --on-accent:#ffffff;--on-forest:#f8f8ef;--on-copper:#153b2d;
+ --field-border:#82988c;--error:#9b2f25;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){
+ --bg:#0e201a;--surface:#173127;--ink:#f1f5ec;--muted:#c1d1c6;
+ --line:#456253;--accent:#edb38a;--accent-hover:#f5c8a9;
+ --tint:#233e31;--forest:#0c3629;--seed:#edb38a;
+ --on-accent:#183628;--field-border:#789788;--error:#ffb4a9;
+}}
+:root[data-theme=dark]{
+ --bg:#0e201a;--surface:#173127;--ink:#f1f5ec;--muted:#c1d1c6;
+ --line:#456253;--accent:#edb38a;--accent-hover:#f5c8a9;
+ --tint:#233e31;--forest:#0c3629;--seed:#edb38a;
+ --on-accent:#183628;--field-border:#789788;--error:#ffb4a9;
+}
+body,.header{background:var(--bg)}
+.button{background:var(--accent);color:var(--on-accent)}
+.button:hover{background:var(--accent-hover)}
+.outline{background:transparent;color:var(--ink);border-color:var(--field-border)}
+.hero-copy,.production-section{color:var(--on-forest)}
+.hero-copy .hero-lead{color:#dce7de}
+.hero-copy .eyebrow,.hero-workshop-link{color:#dce7de}
+.hero-copy h1 span{color:var(--seed)}
+.hero-copy .button,.hero-stamp,.hero-visual-caption,.production-question{background:var(--seed);color:var(--on-copper)}
+.hero-copy .button:hover{background:#f7c9a9}
+.hero-copy .text-button,.hero-workshop-link{color:var(--on-forest)}
+.hero-visual-caption a,.hero-visual-caption>span{color:var(--on-copper)}
+.production-top>p,.production-tab,.production-tab-copy{color:#d6e3da}
+.production-tab.active .production-tab-title{color:var(--seed)}
+.production-question>span,.production-question p{color:#284c3a}
+.production-question h3{color:var(--on-copper)}
+.final-section{background:var(--seed);color:var(--on-copper)}
+.final-section h2{color:var(--on-copper)}
+.final-section p,.final-section .eyebrow,.final-note span{color:#284c3a}
+.final-section .button{background:var(--forest);color:var(--on-forest)}
+.final-section .button:hover{background:#14533e}
+.final-note span{border-color:#8b654b}
+.header-actions>.outline{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.header-actions>.outline:hover{background:var(--accent);color:var(--on-accent)}
+.filter.active{background:var(--forest);color:var(--on-forest);border-color:var(--forest)}
+.gallery-views button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.form-field input,select,.gallery-views button,.compare-pick{border-color:var(--field-border)}
+.form-field input{background:var(--surface);color:var(--ink)}
+.form-field input::placeholder{color:var(--muted)}
+.form-field input[aria-invalid=true]{border-color:var(--error)}
+.form-error{color:var(--error)}
+:focus-visible{outline-color:var(--ink)}
+.hero-copy :focus-visible,.production-section :focus-visible{outline-color:var(--seed)}
+@media(max-width:768px){.production-tab.active{background:#214b37}}
