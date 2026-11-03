@@ -331,3 +331,12 @@ dialog{border-radius:var(--store-r-lg)}
 .final-note span{background:color-mix(in srgb,var(--hero-ink) 10%,transparent);color:var(--hero-ink)}
 .footer nav a,.footer nav .text-button{display:inline-flex;align-items:center;min-height:44px;font-size:16px;font-weight:500}
 .footer-top>p{color:var(--ink)}
+
+/* Iteration 11: neighbouring sections on the same white ground stacked two full paddings (232px of empty
+   ground between the photographs, the process and the questions). On desktop they now sit 144px apart,
+   which still reads as a change of subject. The question's plus turns into a cross when it is open, so the
+   state shows where the eye already is. */
+@media(min-width:951px){.catalog,.real-houses,.process-section,.faq-section{padding-top:72px;padding-bottom:72px}}
+.faq-list summary:after{display:inline-block;transition:transform 200ms cubic-bezier(.23,1,.32,1)}
+.faq-list details[open] summary:after{content:'+';transform:rotate(45deg)}
+@media(prefers-reduced-motion:reduce){.faq-list summary:after{transition:none}}
