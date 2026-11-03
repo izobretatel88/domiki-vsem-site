@@ -174,8 +174,8 @@ document.addEventListener('focusin',e=>{
  if(!$('.mobile-nav').hidden&&!$('.header').contains(e.target))setMobileMenu(false);
 });
 matchMedia('(min-width:769px)').addEventListener('change',e=>{
- if(!e.matches)return;
  const active=document.activeElement;
+ if(!e.matches){if(active===$('.header-actions [data-quiz]'))$('.menu-button').focus({preventScroll:true});return;}
  if(active===$('.menu-button')||$('.mobile-nav').contains(active))$('.desktop-nav a')?.focus({preventScroll:true});
  setMobileMenu(false);
 });
@@ -190,6 +190,7 @@ const productionQuestions={
 $$('[data-production]').forEach(b=>b.addEventListener('click',()=>{$$('[data-production]').forEach(x=>{const active=x===b;x.classList.toggle('active',active);x.setAttribute('aria-pressed',active)});$('#production-image').src='assets/'+b.dataset.production+'.webp';$('#production-image').alt=productionLabels[b.dataset.production]+' на производстве Домики-Всем';$('#production-full').href='assets/'+b.dataset.production+'.webp';$('#production-full').setAttribute('aria-label','Рассмотреть фото: '+b.querySelector('.production-tab-title').textContent.replace('↗','').trim()+' (новая вкладка)');const question=productionQuestions[b.dataset.production];$('#production-question-title').textContent=question[0];$('#production-question-copy').textContent=question[1];}));
 function openQuiz(id=null,fromDetail=false,purpose=null,edition=null){contactDrafts={};lastFocused=document.activeElement;quiz={purpose,model:id,edition:fromDetail?state.edition:edition,area:id?(models.find(m=>m.id===id).area<40?'До 40 м²':models.find(m=>m.id===id).area<60?'40–60 м²':'60–80 м²'):'',season:'',place:'',method:'Telegram',name:'',contact:'',canCall:false,step:purpose?3:1};quizDialog.showModal();document.body.style.overflow='hidden';renderQuiz();}
 function closeQuiz(){quizDialog.close();}
+$('#mobile-menu-quiz').addEventListener('click',()=>{setMobileMenu(false,true);openQuiz();});
 $$('[data-quiz]').forEach(b=>b.addEventListener('click',()=>openQuiz(null,false,null,b.closest('.hero')?Number($('#hero-edition').value):null)));$('.close-dialog').addEventListener('click',closeQuiz);quizDialog.addEventListener('close',()=>{document.body.style.overflow='';lastFocused?.focus()});
 quizDialog.addEventListener('click',e=>{if(e.target===quizDialog){const r=quizDialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeQuiz();}});
 function quizTop(title,description){if(quiz.purpose)return `<p class="quiz-step-label">Посещение производства</p><h2 class="quiz-title" id="quiz-title" tabindex="-1">${title}</h2><p class="quiz-description">${description}</p>`;return `<div class="quiz-progress" aria-label="Шаг ${quiz.step} из 3">${[1,2,3].map(i=>`<span class="${i<=quiz.step?'done':''}"></span>`).join('')}</div><p class="quiz-step-label">${['','Ваши пожелания','Подборка и цены','Способ связи'][quiz.step]} / ${quiz.step} из 3</p><h2 class="quiz-title" id="quiz-title" tabindex="-1">${title}</h2><p class="quiz-description">${description}</p>`;}
