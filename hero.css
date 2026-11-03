@@ -42,8 +42,6 @@
 .hero-offer{padding:28px 30px;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;align-items:stretch;min-width:0}
 .hero-offer h2{font-family:var(--display);font-size:27px;line-height:1.35;letter-spacing:-.03em;font-weight:400;margin:0}
 .hero-model-meta{font-size:13px;color:var(--muted);margin-top:8px}
-.hero-price-date{font-size:12px;line-height:1.6;color:var(--muted);margin-top:14px}
-.hero-price-scope{font-size:13px;line-height:1.65;color:var(--muted);margin-top:10px}
 .hero-offer .button{width:100%;font-size:14px;min-height:48px;justify-content:space-between;gap:14px;margin-top:auto}
 .hero-offer :focus-visible{outline-color:var(--accent)}
 @media(max-width:1100px) and (min-width:769px){
@@ -58,8 +56,6 @@
  .hero-offer{order:4;padding:16px 24px 20px}
  .hero-offer h2{font-size:20px}
  .hero-model-meta{font-size:12px;margin-top:3px}
- .hero-price-date{font-size:12px;margin-top:8px}
- .hero-price-scope{font-size:12px;margin-top:5px}
  .hero-offer .button{margin-top:14px}
 }
 @media(max-width:370px){
@@ -168,6 +164,36 @@
  .hero-package{min-height:48px;padding:9px 14px;gap:4px 10px}
  .hero-package-name{font-size:14px}
  .hero-package-price{font-size:16px}
- .hero-price-date{margin-top:10px}
 }
 @media(prefers-reduced-motion:reduce){.hero-package,.hero-package input::before{transition:none}}
+
+/* Phone: the promise is explained under the headline, and one clear action leads to the catalogue. */
+.hero-price-note{font-size:13px;line-height:1.65;color:var(--muted);margin-top:14px}
+.hero-model-meta{font-size:14px}
+@media(max-width:950px){.hero-model-meta{font-size:14px;margin-top:6px}.hero-price-note{margin-top:12px}}
+@media(max-width:768px){
+ .hero-v3 .hero-copy h1{margin-bottom:12px}
+ .hero-v3 .hero-copy .hero-lead{display:block;order:2;margin:0 24px 26px;font-size:15px;line-height:1.6;max-width:34ch;color:#dce7de}
+ .hero-v3 .hero-buttons{flex-direction:column;align-items:stretch;gap:6px;margin:24px 24px 8px}
+ .hero-v3 .hero-buttons>.button{justify-content:space-between;min-height:52px;padding:14px 20px;background:var(--seed);color:var(--on-copper);font-size:15px}
+ .hero-v3 .hero-buttons>.text-button{align-self:flex-start;font-size:14px;min-height:44px;text-decoration:underline;text-underline-offset:4px}
+}
+@media(max-width:950px){
+ .hero-offer .button{background:transparent;color:var(--ink);border-color:var(--ink)}
+ .hero-offer .button:hover{background:var(--tint);border-color:var(--ink)}
+}
+
+/* Manufacturing evidence is shown at a size that can be read as photographs. */
+.hero-workshop-proof{padding:24px 28px;gap:40px}
+.hero-workshop-copy strong{font-size:20px;font-family:var(--display);font-weight:400;letter-spacing:-.02em}
+.hero-workshop-copy p{font-size:14px;max-width:30ch}
+.hero-workshop-photos{width:min(640px,62%);gap:14px}
+.hero-workshop-photos img{height:120px}
+.hero-workshop-photos a>span{font-size:14px;padding-top:8px}
+@media(max-width:950px){.hero-workshop-photos{width:100%}}
+@media(max-width:768px){
+ .hero-workshop-proof{padding:22px 24px 26px;gap:16px}
+ .hero-workshop-photos{gap:8px}
+ .hero-workshop-photos img{height:92px}
+ .hero-workshop-photos a>span{font-size:13px}
+}
