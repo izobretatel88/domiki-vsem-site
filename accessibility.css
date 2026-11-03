@@ -93,3 +93,12 @@ button:active,.filter:active{filter:brightness(.9)}
  #quiz-content[data-step="1"] #quiz-error:empty{display:none}
  #quiz-content[data-step="1"] .quiz-actions{margin-top:16px;padding-top:0;border-top:0;gap:8px}
 }
+
+.production-photo-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 12px;color:var(--on-forest)}
+.production-photo-tools>span{font-size:12px;line-height:1.6;color:#dce7de}
+.production-photo-tools .text-button{font-size:14px;min-height:44px;color:var(--on-forest);white-space:nowrap}
+
+@media(min-width:769px){
+ .production-layout>.production-tabs{grid-column:2;grid-row:1}
+ .production-layout>.production-evidence{grid-column:1;grid-row:1}
+}
