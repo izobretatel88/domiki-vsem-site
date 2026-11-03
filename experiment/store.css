@@ -295,3 +295,16 @@ dialog{border-radius:var(--store-r-lg)}
 .process-list li,.process-list li+li,.process-list li:nth-child(3){background:transparent;border-radius:0;padding:0 24px 0 0}
 .process-list{gap:32px 24px}
 .process-list .step-number{display:block;color:var(--accent);margin-bottom:12px}
+
+/* Iteration 8: the phone gets its own five steps too. Display 36, section 26, card 22, body 16, small 14. */
+@media(max-width:950px){
+ main h2:not(.hero-offer h2),.store-types h2,.faq-layout>h2,.final-section h2{font-size:26px;line-height:1.2}
+ .step-number{font-size:36px}
+ .package-choice h3,.production-tab-title,.production-question h3,.readiness-summary h3,.hero-workshop-copy strong,.model-info h3,.process-list h3,.hero-offer>h2,.model-price strong,.catalog-help strong{font-size:22px}
+ .hero-v3 .hero-copy .hero-lead,.hero-v3 .hero-buttons>.button,.hero-v3 .hero-buttons>.button span{font-size:16px}
+ .store-notice,.filter{font-size:14px}
+ .brand-name{font-size:20px}
+}
+@media(max-width:370px){main h2:not(.hero-offer h2),.store-types h2,.faq-layout>h2,.final-section h2{font-size:22px}}
+@media(max-width:950px){.final-section h2{font-size:24px}}@media(max-width:370px){.final-section h2{font-size:21px}}
+@media(max-width:768px){.production-tab-title{font-size:16px;font-weight:600;line-height:1.35}}
