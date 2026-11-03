@@ -348,3 +348,12 @@ dialog{border-radius:var(--store-r-lg)}
 .model-image .circle-arrow{border-radius:50%;background:#fff;color:#13241d}
 .hero-view-controls{border-radius:100px;padding:4px}
 .hero-view-controls button{border-radius:100px;padding-left:16px;padding-right:16px}
+
+/* Iteration 13: the floating compare tray took the tile colour in iteration 0 but kept the forest panel's
+   light text, so on the light theme its message and «Очистить» were white on near-white. It now sits on the
+   sage field with the page ink, its main button is the dark action pill, and it reads in both themes. */
+.compare-tray{background:var(--sage);color:var(--ink)}
+.compare-tray p,.compare-tray .text-button{color:var(--ink)}
+.compare-tray .button{background:var(--action);color:var(--action-ink)}
+.compare-tray .button:disabled{opacity:.55}
+.compare-tray :focus-visible{outline-color:var(--action)}
