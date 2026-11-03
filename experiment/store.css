@@ -193,3 +193,73 @@ dialog{border-radius:var(--store-r-lg)}
  .js-reveal .reveal{opacity:0;transform:translateY(24px);transition:opacity 640ms cubic-bezier(.23,1,.32,1),transform 640ms cubic-bezier(.23,1,.32,1);transition-delay:calc(var(--reveal-i,0)*70ms)}
  .js-reveal .reveal.is-in{opacity:1;transform:none}
 }
+
+/* Iteration 5 (owner feedback, 03.11 22:43). */
+/* An information plate above the bar, like the reference's announcement strip. It scrolls away. */
+.store-notice{margin:0;padding:10px 20px;background:var(--action);color:var(--action-ink);text-align:center;font-size:14px;line-height:1.5}
+.store-notice span{display:inline}
+.hero-price-note{margin-top:4px;margin-bottom:20px}
+.hero-offer #hero-model-open{margin-top:auto}
+
+/* Catalogue filters as one calm toolbar: types as chips, area and package as pill selects, view toggle at the end. */
+.store-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;margin:8px 0 12px}
+.store-toolbar .catalog-controls{border:0;padding:0;margin:0}
+.store-toolbar .catalog-options{flex:1 1 auto;margin:0}
+.store-toolbar .catalog-options>summary{display:none}
+.store-toolbar .catalog-options-panel{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;padding:0;margin:0;background:transparent;border-radius:0}
+.store-toolbar .area-filter,.store-toolbar .catalog-edition{display:flex;align-items:center;gap:8px;margin:0;font-size:14px;color:var(--muted)}
+.store-toolbar .catalog-edition>label{white-space:nowrap}
+.store-toolbar select{border-radius:100px;border:0;background:var(--store-tile);color:var(--ink);font:inherit;font-size:14px;font-weight:600;padding:10px 36px 10px 16px;min-height:44px}
+.store-toolbar #catalog-edition-note,.store-toolbar #catalog-options-done{display:none}
+.store-toolbar .catalog-view{margin:0 0 0 auto;display:flex;align-items:center;gap:12px}
+.store-toolbar .catalog-view>span{display:none}
+.store-toolbar .catalog-view button{border-radius:100px;border:0;background:var(--store-tile);min-height:44px;padding:8px 18px}
+.store-toolbar .catalog-view button[aria-pressed=true]{background:var(--action);color:var(--action-ink)}
+.catalog .section-heading{margin-bottom:24px}
+.catalog-meta{display:flex;justify-content:space-between;gap:16px;margin:8px 0 28px;font-size:14px;line-height:1.5;color:var(--muted)}
+.catalog-meta>span{display:inline}
+
+/* House cards: picture, name, size, price, then one quiet row of secondary actions. */
+.catalog .model-grid{row-gap:64px}
+.catalog .model-price{display:block;padding-top:4px}
+.catalog .model-price strong{display:block}
+.catalog .model-price-context{margin:6px 0 0;color:var(--muted)}
+.catalog .model-inclusions{margin-top:16px;padding-top:0;border:0}
+.catalog .model-inclusions summary{padding:12px 16px;border-radius:100px;background:var(--store-tile)}
+.catalog .compare-pick{margin-top:10px;border:0;background:transparent;padding:8px 0;min-height:44px;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--line)}
+.catalog .compare-pick[aria-pressed=true]{color:var(--accent);font-weight:600}
+
+/* Production without copper: the question card on sage, the active process in full white. */
+.production-question{background:#e9efe4;color:#13241d}
+.production-question h3,.production-question>span,.production-question p{color:#13241d}
+.production-tab.active .production-tab-title{color:#ffffff;font-weight:600}
+.production-visit .text-button{color:#ffffff;text-decoration:underline;text-underline-offset:4px}
+.production-visit p{font-size:16px}
+
+/* Packages: the comparison summary gets air below the cards. */
+.readiness-summary{margin-top:32px;padding:28px 32px}
+.readiness-summary p{font-size:16px}
+.readiness-summary .text-button{font-size:14px}
+
+@media(max-width:768px){
+ .store-notice{font-size:13px;padding:10px 16px;text-align:left}
+ .store-toolbar{gap:12px}
+ .store-toolbar .catalog-options-panel{display:grid;grid-template-columns:1fr;width:100%}
+ .store-toolbar .area-filter,.store-toolbar .catalog-edition{justify-content:space-between}
+ .store-toolbar .catalog-edition{flex-wrap:wrap}
+ .store-toolbar .catalog-view{margin-left:0}
+ .catalog-meta{display:block}
+ .catalog-meta>span{display:block}
+ .readiness-summary{padding:24px}
+}
+.store-toolbar .catalog-options{flex:0 1 auto}
+.catalog .store-toolbar .area-filter,.catalog .store-toolbar .catalog-edition{display:flex;flex-direction:row;align-items:center}
+.catalog .store-toolbar select{display:inline-block;width:auto;margin:0}
+@media(max-width:768px){.catalog .store-toolbar select{flex:1 1 auto;max-width:70%}}
+.store-toolbar .catalog-options,.store-toolbar .catalog-controls{width:auto;max-width:none}
+@media(min-width:1200px){.store-toolbar,.store-toolbar .catalog-options-panel{column-gap:8px}.store-toolbar .area-filter,.store-toolbar .catalog-edition{margin-left:8px}}
+/* Two clear rows: what kind of house and how to look at it; then size and package. */
+.store-toolbar .catalog-controls{order:1}
+.store-toolbar .catalog-view{order:2;margin-left:auto}
+.store-toolbar .catalog-options{order:3;flex:1 1 100%}
+.store-toolbar .area-filter,.store-toolbar .catalog-edition{margin-left:0}
