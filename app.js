@@ -76,34 +76,15 @@ $$('[data-hero-view]').forEach(button=>button.addEventListener('click',()=>{
  $$('[data-hero-view]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
  if(img.complete)finishHeroImageLoad(!img.naturalWidth);
 }));
+const heroEdition=()=>Number($('input[name="hero-edition"]:checked').value);
 function renderHeroOffer(){
  const model=models.find(m=>m.id==='1');if(!model)return;
- const edition=Number($('#hero-edition').value);
- $('#hero-price').textContent=money(model.prices[edition]);
- $('#hero-package-name').textContent=packageNames[edition];
- $('#hero-mobile-package').textContent=packageNames[edition];
- $('#hero-change-package').setAttribute('aria-label','Сменить комплектацию: '+packageNames[edition]);
- $('#hero-package-copy').textContent=packageCopy[edition];
- const increase=edition===0?model.prices[1]-model.prices[0]:model.prices[edition]-model.prices[edition-1];
- $('#hero-package-delta').textContent=edition===0?'Тёплый контур: +'+money(increase):'+'+money(increase)+(edition===1?' к холодному контуру':' к тёплому контуру');
+ $$('[data-hero-price]').forEach(el=>el.textContent=money(model.prices[el.dataset.heroPrice]));
+ $('#hero-package-copy').textContent=packageCopy[heroEdition()];
 }
-function toggleHeroEdition(open,restoreFocus=false){
- $('.hero-offer').classList.toggle('is-editing',open);
- $('#hero-change-package').setAttribute('aria-expanded',String(open));
- if(restoreFocus)$('#hero-change-package').focus({preventScroll:true});
-}
-$('#hero-change-package').addEventListener('click',()=>toggleHeroEdition(!$('.hero-offer').classList.contains('is-editing')));
-$('#hero-edition-done').addEventListener('click',()=>toggleHeroEdition(false,true));
-$('.hero-offer').addEventListener('keydown',e=>{
- if(e.key==='Escape'&&$('.hero-offer').classList.contains('is-editing')){e.preventDefault();toggleHeroEdition(false,true);}
-});
-matchMedia('(min-width:951px)').addEventListener('change',e=>{
- if(e.matches&&(document.activeElement===$('#hero-change-package')||document.activeElement===$('#hero-edition-done')))$('#hero-edition').focus({preventScroll:true});
- if(!e.matches&&document.activeElement===$('#hero-edition')&&!$('.hero-offer').classList.contains('is-editing'))$('#hero-change-package').focus({preventScroll:true});
-});
-$('#hero-edition').addEventListener('change',renderHeroOffer);
-$('#hero-catalog-open').addEventListener('click',()=>applyCatalogEdition(Number($('#hero-edition').value)));
-$('#hero-model-open').addEventListener('click',()=>houseChoices.set('1',{edition:Number($('#hero-edition').value),gallery:1}));
+$('#hero-packages').addEventListener('change',renderHeroOffer);
+$('#hero-catalog-open').addEventListener('click',()=>applyCatalogEdition(heroEdition()));
+$('#hero-model-open').addEventListener('click',()=>houseChoices.set('1',{edition:heroEdition(),gallery:1}));
 function applyCatalogEdition(index){state.catalogEdition=index;houseChoices.clear();$('#catalog-edition').value=String(index);$('#catalog-edition-note').textContent=packageCopy[index];renderCatalog();}
 $('#catalog-edition').addEventListener('change',e=>applyCatalogEdition(Number(e.target.value)));
 function renderCatalog(){if(!models.length)return;$('#catalog-options-summary').textContent=({all:'Любая площадь',small:'До 40 м²',medium:'40–60 м²',large:'От 60 м²'})[state.area]+' · '+packageNames[state.catalogEdition];const list=models.filter(m=>(state.category==='all'||m.categoryKey===state.category)&&(state.area==='all'||(state.area==='small'&&m.area<40)||(state.area==='medium'&&m.area>=40&&m.area<60)||(state.area==='large'&&m.area>=60)));$('#model-grid').innerHTML=list.map(m=>modelCard(m,true)).join('');$('#catalog-count').textContent=list.length+' '+(['модель','модели','моделей'][list.length===1?0:list.length>1&&list.length<5?1:2])+' в подборке';$('#catalog-empty').hidden=!!list.length;updateComparison();}
@@ -235,7 +216,7 @@ $$('[data-production-preview]').forEach(link=>link.addEventListener('click',e=>{
 function openQuiz(id=null,fromDetail=false,purpose=null,edition=null){contactDrafts={};lastFocused=document.activeElement;quiz={purpose,model:id,edition:fromDetail?state.edition:edition,area:id?(models.find(m=>m.id===id).area<40?'До 40 м²':models.find(m=>m.id===id).area<60?'40–60 м²':'60–80 м²'):'',season:'',place:'',method:'Telegram',name:'',contact:'',canCall:false,step:purpose?3:1};quizDialog.showModal();document.body.style.overflow='hidden';renderQuiz();}
 function closeQuiz(){quizDialog.close();}
 $('#mobile-menu-quiz').addEventListener('click',()=>{setMobileMenu(false,true);openQuiz();});
-$$('[data-quiz]').forEach(b=>b.addEventListener('click',()=>openQuiz(null,false,null,b.closest('.hero')?Number($('#hero-edition').value):null)));$('.close-dialog').addEventListener('click',closeQuiz);quizDialog.addEventListener('close',()=>{document.body.style.overflow='';lastFocused?.focus()});
+$$('[data-quiz]').forEach(b=>b.addEventListener('click',()=>openQuiz(null,false,null,b.closest('.hero')?heroEdition():null)));$('.close-dialog').addEventListener('click',closeQuiz);quizDialog.addEventListener('close',()=>{document.body.style.overflow='';lastFocused?.focus()});
 quizDialog.addEventListener('click',e=>{if(e.target===quizDialog){const r=quizDialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeQuiz();}});
 function quizTop(title,description){if(quiz.purpose)return `<p class="quiz-step-label">Посещение производства</p><h2 class="quiz-title" id="quiz-title" tabindex="-1">${title}</h2><p class="quiz-description">${description}</p>`;return `<div class="quiz-progress" aria-label="Шаг ${quiz.step} из 3">${[1,2,3].map(i=>`<span class="${i<=quiz.step?'done':''}"></span>`).join('')}</div><p class="quiz-step-label">${['','Ваши пожелания','Подборка и цены','Способ связи'][quiz.step]} / ${quiz.step} из 3</p><h2 class="quiz-title" id="quiz-title" tabindex="-1">${title}</h2><p class="quiz-description">${description}</p>`;}
 function quizActions(next=quiz.step===1?'Показать дома и цены':'Продолжить'){return `<div class="quiz-actions"><button class="text-button" id="quiz-back">${quiz.step>1?'← Назад':'Закрыть'}</button><button class="button" id="quiz-next">${next} <span aria-hidden="true">→</span></button></div><p class="quiz-demo">Демонстрация: заявки не отправляются компании. Используйте тестовые контакты.</p>`;}
@@ -269,7 +250,7 @@ async function init(){
  if(catalogLoading)return;
  catalogLoading=true;
  const origin=document.activeElement?.id;
- const dependent=[$('#hero-edition'),$('#hero-change-package'),$('#mobile-menu-quiz'),...$$('[data-quiz]')];
+ const dependent=[...$$('input[name="hero-edition"]'),$('#mobile-menu-quiz'),...$$('[data-quiz]')];
  dependent.forEach(el=>el.disabled=true);
  $('#hero-data-retry').disabled=true;
  if($('#catalog-data-retry'))$('#catalog-data-retry').disabled=true;
@@ -293,7 +274,7 @@ async function init(){
  }finally{
   catalogLoading=false;dependent.forEach(el=>el.disabled=!models.length);$('#hero-data-retry').disabled=false;
   if(!models.length&&['hero-data-retry','catalog-data-retry'].includes(origin))$('#'+origin).focus({preventScroll:true});
-  if(models.length&&$('#detail-page').hidden&&origin==='hero-data-retry')$(matchMedia('(max-width:950px)').matches?'#hero-change-package':'#hero-edition').focus({preventScroll:true});
+  if(models.length&&$('#detail-page').hidden&&origin==='hero-data-retry')$('input[name="hero-edition"]:checked').focus({preventScroll:true});
   if(models.length&&$('#detail-page').hidden&&origin==='catalog-data-retry'){$('#catalog-title').tabIndex=-1;$('#catalog-title').focus({preventScroll:true});}
  }
 }
