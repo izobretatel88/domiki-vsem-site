@@ -1,0 +1,50 @@
+/* First-screen refinement: product, open choice, one primary next step. */
+.hero-v3 .hero-stage{grid-template-columns:44% 56%;min-height:620px}
+.hero-v3 .hero-copy{padding:42px 38px 32px}
+.hero-v3 .hero-copy:after{display:none}
+.hero-v3 .hero-copy .eyebrow{font-size:12px;margin-bottom:32px;line-height:1.6}
+.hero-v3 .hero-copy h1{font-size:clamp(40px,4vw,58px);line-height:1.16;margin:0;letter-spacing:-.035em}
+.hero-v3 .hero-copy h1 span{font-size:.78em;display:inline-block;margin-top:8px}
+.hero-v3 .hero-lead{font-size:16px;line-height:1.75;max-width:37ch;margin-top:26px}
+.hero-v3 .hero-buttons{margin-top:28px;gap:8px}
+.hero-v3 .hero-copy .button{font-size:14px;min-height:54px;gap:26px;padding:15px 22px}
+.hero-v3 .hero-copy .text-button{font-size:14px;min-height:44px}
+.hero-v3 .hero-workshop-link{margin-top:auto;padding-top:32px;gap:16px;justify-content:flex-start;width:100%;min-height:76px}
+.hero-v3 .hero-workshop-link>img{width:96px;height:68px;object-fit:cover}
+.hero-v3 .hero-workshop-link>span{border:0;padding:0;font-size:14px;flex:0 1 auto}
+.hero-v3 .hero-workshop-link strong{display:block;font-size:14px;font-weight:600;line-height:1.6}
+.hero-v3 .hero-workshop-link small{display:block;font-size:12px;line-height:1.7;color:#dce7de;margin-top:4px}
+.hero-v3 .hero-visual{min-height:620px;height:auto}
+.hero-v3 .hero-visual>img{object-position:58% 50%}
+.hero-v3 .image-caption{font-size:12px;bottom:20px;left:20px;padding:6px 10px}
+@media(min-width:769px) and (max-width:1100px){
+ .hero-v3 .hero-stage{grid-template-columns:46% 54%;min-height:600px}
+ .hero-v3 .hero-copy{padding:36px 28px 28px}
+ .hero-v3 .hero-copy h1{font-size:40px}
+ .hero-v3 .hero-lead{font-size:15px}
+ .hero-v3 .hero-copy .button{font-size:13px;padding:14px 18px;gap:16px}
+ .hero-v3 .hero-workshop-link>img{width:70px;height:58px}
+ .hero-v3 .hero-visual{min-height:600px}
+}
+@media(max-width:768px){
+ .hero-v3 .hero-stage{display:flex;flex-direction:column;min-height:0;background:var(--forest);color:var(--on-forest)}
+ .hero-v3 .hero-copy{display:contents}
+ .hero-v3 .hero-copy .eyebrow{order:1;margin:22px 24px 18px}
+ .hero-v3 .hero-copy h1{order:2;font-size:36px;margin:0 24px 22px;max-width:none}
+ .hero-v3 .hero-copy h1 span{margin-top:6px}
+ .hero-v3 .hero-visual{order:3;min-height:clamp(250px,55vw,390px);height:clamp(250px,55vw,390px)}
+ .hero-v3 .hero-visual>img{object-position:58% 54%}
+ .hero-v3 .image-caption{left:16px;bottom:12px;font-size:12px}
+ .hero-v3 .hero-lead{order:4;margin:20px 24px 0;max-width:40ch;font-size:16px;line-height:1.65}
+ .hero-v3 .hero-buttons{order:5;margin:18px 24px 0;gap:6px;flex-direction:column;align-items:flex-start}
+ .hero-v3 .hero-copy .button{min-height:52px}
+ .hero-v3 .hero-workshop-link{order:6;display:flex;width:auto;margin:18px 24px 24px;padding-top:20px;border-top:1px solid #4f705a;min-height:0}
+ .hero-v3 .hero-workshop-link>img{width:80px;height:60px}
+}
+@media(max-width:370px){
+ .hero-v3 .hero-copy h1{font-size:30px}
+ .hero-v3 .hero-copy .eyebrow{font-size:11px}
+ .hero-v3 .hero-visual{min-height:215px;height:215px}
+ .hero-v3 .hero-lead{font-size:15px}
+ .hero-v3 .hero-copy .button{font-size:13px;gap:20px}
+}
