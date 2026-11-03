@@ -29,17 +29,44 @@ const quizDialog=$('#quiz-dialog');
 $('#catalog-options-done').addEventListener('click',()=>{$('#catalog-options').open=false;$('#catalog-options summary').focus();});
 function modelCard(m,canCompare=false){const plan=canCompare&&state.catalogView==='plan';return `<article class="model-card"><a class="model-image ${plan?'is-plan':''}" href="#house-${esc(m.id)}" aria-label="Подробнее: ${esc(m.title)}"><img src="${esc(m.images[plan?1:0])}" alt="${plan?'Планировка: ':'Фасад: '}${esc(m.title)}, из каталога компании" width="960" height="660" loading="lazy"><span class="model-type">${esc(m.category)}</span><span class="circle-arrow" aria-hidden="true">↗</span></a><div class="model-info"><h3><a href="#house-${esc(m.id)}">${esc(m.title)}</a></h3><div class="model-specs"><span>${esc(m.area)} м² общий габарит</span><span>${esc(m.size)} м</span></div></div><div class="model-price"><div><strong>${money(m.prices[state.catalogEdition])}</strong><span class="price-caption">${packageNames[state.catalogEdition]}</span></div><a class="text-button" href="#house-${esc(m.id)}">Выбрать комплектацию ↗</a></div>${canCompare?`<p class="model-price-context">Отделка на фото может не входить в цену.</p><details class="model-inclusions"><summary aria-label="Что входит в цену: ${esc(m.title)}">Что входит в цену</summary><div><p>${packageCopy[state.catalogEdition]}</p><p>Фундамент, доставку, монтаж и инженерные системы нужно уточнить в смете.</p></div></details>`:''}${canCompare?`<button class="compare-pick" data-compare="${esc(m.id)}" aria-pressed="${comparison.has(m.id)}" aria-label="${comparison.has(m.id)?'Убрать из сравнения: ':'Сравнить: '}${esc(m.title)}">${comparison.has(m.id)?'Добавлен в сравнение':'Добавить к сравнению'}</button>`:''}</article>`;}
 const heroFacade={src:$('#hero-image').getAttribute('src'),srcset:$('#hero-image').getAttribute('srcset'),sizes:$('#hero-image').getAttribute('sizes')};
+let heroImageTimer=null;
+function finishHeroImageLoad(error=false){
+ clearTimeout(heroImageTimer);
+ const visual=$('#hero-image').closest('.hero-visual');
+ visual.classList.remove('is-image-pending');visual.classList.toggle('is-image-error',error);
+ $('#hero-image-feedback').hidden=!error;
+ $('#hero-image-status').textContent=error?'Не удалось загрузить '+(visual.classList.contains('is-plan')?'планировку.':'изображение дома.'):'';
+ $('#hero-image-retry').hidden=!error;
+ $('#hero-plan-full').hidden=error||!visual.classList.contains('is-plan');
+}
+function startHeroImageLoad(){
+ clearTimeout(heroImageTimer);
+ const visual=$('#hero-image').closest('.hero-visual');
+ visual.classList.remove('is-image-error');visual.classList.add('is-image-pending');
+ $('#hero-image-feedback').hidden=true;$('#hero-image-retry').hidden=true;$('#hero-plan-full').hidden=true;
+ heroImageTimer=setTimeout(()=>{$('#hero-image-status').textContent='Загружаем изображение…';$('#hero-image-feedback').hidden=false;},250);
+}
+$('#hero-image').addEventListener('load',()=>finishHeroImageLoad());
+$('#hero-image').addEventListener('error',()=>finishHeroImageLoad(true));
+$('#hero-image-retry').addEventListener('click',()=>{
+ const img=$('#hero-image'),url=new URL(img.src);url.searchParams.set('retry',Date.now());
+ $('[data-hero-view][aria-pressed="true"]').focus({preventScroll:true});
+ startHeroImageLoad();img.removeAttribute('srcset');img.removeAttribute('sizes');img.src=url.href;
+});
+if($('#hero-image').complete)finishHeroImageLoad(!$('#hero-image').naturalWidth);else startHeroImageLoad();
 $$('[data-hero-view]').forEach(button=>button.addEventListener('click',()=>{
  const plan=button.dataset.heroView==='plan';const img=$('#hero-image');
+ startHeroImageLoad();
  img.srcset=plan?'':heroFacade.srcset;img.sizes=plan?'':heroFacade.sizes;
  img.width=plan?1537:1600;img.height=1200;
  img.src=plan?'assets/house-1-2.webp':heroFacade.src;
  img.alt=plan?'Планировка дачного домика 8×6 из каталога компании':'Дачный домик 8×6: визуализация из каталога компании';
  img.closest('.hero-visual').classList.toggle('is-plan',plan);
- $('#hero-plan-full').hidden=!plan;
+ $('#hero-plan-full').hidden=!plan||!img.complete||!img.naturalWidth;
  $('#hero-image-caption').textContent=plan?'Планировка из каталога':'Визуализация из каталога';
  $('#hero-price-scope').textContent=plan?'Мебель и сантехника на плане — условные обозначения. Состав и работы на участке — по смете.':'Фундамент, доставка, монтаж и инженерия — по смете. Состав на изображении нужно сверить.';
  $$('[data-hero-view]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+ if(img.complete)finishHeroImageLoad(!img.naturalWidth);
 }));
 function renderHeroOffer(){
  const model=models.find(m=>m.id==='1');if(!model)return;
