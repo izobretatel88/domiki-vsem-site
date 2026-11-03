@@ -1,0 +1,236 @@
+/* Architectural opening: clear offer, full-width house, visible next step. */
+.hero-v3 .hero-stage{display:flex;flex-direction:column;min-height:0;background:var(--forest);color:var(--on-forest)}
+.hero-v3 .hero-copy{display:grid;grid-template-columns:1.4fr 1fr;gap:0 64px;padding:32px 38px 36px;background:var(--forest);color:var(--on-forest);align-items:start}
+.hero-v3 .hero-copy:after{display:none}
+.hero-v3 .hero-copy h1{grid-column:1;grid-row:1/3;font-size:clamp(40px,4.7vw,68px);line-height:1.16;letter-spacing:-.035em;margin:0;max-width:none}
+.hero-v3 .hero-copy h1 span{display:inline-block;font-size:.76em;color:var(--seed);margin-top:6px}
+.hero-v3 .hero-copy .hero-lead{grid-column:2;font-size:16px;line-height:1.7;max-width:42ch;margin:0;color:#dce7de}
+.hero-v3 .hero-buttons{grid-column:2;display:flex;flex-direction:row;align-items:center;flex-wrap:wrap;margin:20px 0 0;gap:8px 18px}
+.hero-v3 .hero-buttons .button{font-size:14px;min-height:54px;padding:15px 22px;gap:24px;background:var(--seed);color:var(--on-copper)}
+.hero-v3 .hero-buttons .button:hover{background:#f7c9a9}
+.hero-v3 .hero-buttons .text-button{font-size:14px;min-height:44px;color:var(--on-forest)}
+.hero-v3 .hero-visual{height:550px;min-height:550px}
+.hero-v3 .hero-visual>img{object-position:50% 52%}
+.hero-v3 .image-caption{font-size:12px;left:20px;bottom:20px;padding:6px 10px}
+@media(max-width:1100px) and (min-width:769px){
+ .hero-v3 .hero-copy{gap:0 32px;grid-template-columns:1.2fr 1fr}
+ .hero-v3 .hero-copy h1{font-size:46px}
+ .hero-v3 .hero-visual{height:440px;min-height:440px}
+}
+@media(max-width:768px){
+ .hero-v3 .hero-copy{display:contents}
+ .hero-v3 .hero-stage{background:var(--forest);color:var(--on-forest)}
+ .hero-v3 .hero-copy h1{order:2;font-size:36px;margin:28px 24px 22px}
+ .hero-v3 .hero-visual{order:3;height:clamp(250px,55vw,390px);min-height:clamp(250px,55vw,390px)}
+ .hero-v3 .hero-visual>img{object-position:58% 54%}
+ .hero-v3 .image-caption{font-size:12px;left:16px;bottom:12px}
+ .hero-v3 .hero-copy .hero-lead{order:4;margin:20px 24px 0;font-size:16px;line-height:1.65;max-width:40ch}
+ .hero-v3 .hero-buttons .button{min-height:52px}
+}
+@media(max-width:370px){
+ .hero-v3 .hero-copy h1{font-size:30px}
+ .hero-v3 .hero-visual{height:215px;min-height:215px}
+ .hero-v3 .hero-copy .hero-lead{font-size:15px}
+ .hero-v3 .hero-buttons .button{font-size:13px;gap:20px}
+}
+.hero-v3 .hero-copy :focus-visible{outline-color:var(--seed)}
+
+/* A real catalogue example connects the image, readiness and price. */
+.hero-v3 .hero-featured{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(300px,1fr)}
+.hero-v3 .hero-featured .hero-visual{height:570px;min-height:570px}
+.hero-v3 .hero-featured .hero-visual>img{object-position:50% 54%}
+.hero-offer{padding:28px 30px;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;align-items:stretch;min-width:0}
+.hero-offer h2{font-family:var(--display);font-size:27px;line-height:1.35;letter-spacing:-.03em;font-weight:400;margin:0}
+.hero-model-meta{font-size:13px;color:var(--muted);margin-top:8px}
+.hero-offer .button{width:100%;font-size:14px;min-height:48px;justify-content:space-between;gap:14px;margin-top:auto}
+.hero-offer :focus-visible{outline-color:var(--accent)}
+@media(max-width:1100px) and (min-width:769px){
+ .hero-v3 .hero-featured{grid-template-columns:minmax(0,1.5fr) minmax(290px,1fr)}
+ .hero-offer{padding:24px}
+ .hero-offer h2{font-size:23px}
+}
+@media(max-width:950px){
+ .hero-v3 .hero-featured{display:contents}
+ .hero-v3 .hero-featured .hero-visual{order:3;height:clamp(260px,67vw,480px);min-height:clamp(260px,67vw,480px)}
+ .hero-v3 .hero-featured .hero-visual>img{object-position:50% 54%}
+ .hero-offer{order:4;padding:16px 24px 20px}
+ .hero-offer h2{font-size:20px}
+ .hero-model-meta{font-size:12px;margin-top:3px}
+ .hero-offer .button{margin-top:14px}
+}
+@media(max-width:370px){
+ .hero-v3 .hero-featured .hero-visual{height:220px;min-height:220px}
+ .hero-offer h2{font-size:18px}
+}
+
+@media(min-width:769px) and (max-width:950px){
+ .hero-v3 .hero-copy h1{font-size:38px}
+ .hero-v3 .hero-copy .hero-lead{font-size:14px}
+ .hero-v3 .hero-featured .hero-visual{height:clamp(360px,47vw,420px);min-height:clamp(360px,47vw,420px);background:var(--forest)}
+ .hero-v3 .hero-featured .hero-visual>img{object-fit:cover;object-position:50% 54%}
+}
+
+@media(max-width:768px){
+ .hero-v3 .hero-buttons{order:5;margin:18px 24px 24px;gap:6px;flex-direction:column;align-items:flex-start}
+ .hero-v3 .hero-copy .hero-lead{display:none}
+ .hero-v3 .hero-buttons{order:5;margin:16px 24px 20px;flex-direction:row;gap:8px 18px}
+ .hero-v3 .hero-buttons>.button{background:transparent;color:var(--on-forest);padding:0;min-height:44px;font-size:14px;gap:12px}
+ .hero-v3 .hero-buttons>.text-button{font-size:13px}
+}
+
+@media(max-width:950px){
+ .hero-offer .button{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+ .hero-offer .button:hover{background:var(--accent-hover);border-color:var(--accent-hover)}
+}
+
+.hero-view-controls{position:absolute;z-index:2;top:16px;left:16px;display:flex;gap:2px;padding:3px;background:var(--surface);border:1px solid var(--line);border-radius:3px}
+.hero-view-controls button{min-height:44px;padding:10px 16px;font-family:inherit;font-size:14px;color:var(--ink);background:transparent;border:0;border-radius:2px;cursor:pointer}
+.hero-view-controls button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+.hero-v3 .hero-featured .hero-visual.is-plan{background:var(--surface)}
+.hero-v3 .hero-featured .hero-visual.is-plan>img{object-fit:contain;padding:76px 20px 48px;box-sizing:border-box;background:var(--surface)}
+.hero-plan-full{position:absolute;z-index:2;right:16px;bottom:12px;min-height:44px;display:flex;align-items:center;font-size:13px;padding:8px 12px;background:var(--surface);color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+.hero-visual.is-plan .image-caption{color:var(--muted);background:var(--surface);bottom:12px;left:16px}
+.hero-view-controls :focus-visible,.hero-plan-full:focus-visible{outline-color:var(--accent)}
+@media(max-width:768px){
+ .hero-view-controls{top:10px;left:12px}
+ .hero-view-controls button{font-size:13px;padding:10px 14px}
+ .hero-v3 .hero-featured .hero-visual.is-plan>img{padding:66px 12px 48px}
+ .hero-visual.is-plan .image-caption{display:none}
+ .hero-plan-full{right:12px;bottom:4px}
+}
+
+/* Describe the actual plan before asking the visitor to decode a floor area. */
+.hero-model-meta{line-height:1.65;max-width:36ch}
+
+
+/* A requested plan needs readable space on phones, rather than a fixed photo crop. */
+@media(max-width:950px){
+ .hero-v3 .hero-featured .hero-visual.is-plan{height:auto;min-height:0}
+ .hero-v3 .hero-featured .hero-visual.is-plan>img{position:relative;inset:auto;display:block;width:calc(100% - 24px);height:auto;max-height:380px;box-sizing:content-box;padding:66px 12px 48px}
+}
+
+
+.hero-image-feedback{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:76px 24px 52px;background:var(--surface);color:var(--ink);text-align:center}
+.hero-image-feedback p{font-size:16px;line-height:1.6;max-width:28ch}
+.hero-image-feedback .button{min-height:44px;background:var(--accent);color:var(--on-accent);font-size:14px;padding:12px 18px}
+.hero-image-feedback .button:focus-visible{outline-color:var(--accent)}
+.hero-visual.is-image-pending>img,.hero-visual.is-image-error>img,.hero-visual.is-image-pending>.image-caption,.hero-visual.is-image-error>.image-caption{visibility:hidden}
+
+.hero-data-feedback{margin-top:20px;font-size:14px;line-height:1.6;color:var(--ink)}
+.hero-data-feedback .text-button{min-height:44px;font-size:14px;margin-top:8px;text-decoration:underline;text-underline-offset:4px}
+.hero-offer.has-data-error .hero-packages,.hero-offer.has-data-error .hero-package-copy,.hero-offer.has-data-error .hero-price-date,.hero-offer.has-data-error #hero-model-open{display:none}
+.catalog-load-error{max-width:48ch;padding:24px 0}
+.catalog-load-error h3{font-size:24px;line-height:1.4;margin-bottom:12px}
+.catalog-load-error p{font-size:16px;line-height:1.6;margin-bottom:20px}
+
+/* The catalogue render is followed by real, attributed manufacturing evidence. */
+.hero-workshop-proof{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 24px;background:var(--forest);color:var(--on-forest)}
+.hero-workshop-copy strong{font-size:16px;font-weight:600;line-height:1.5}
+.hero-workshop-copy p{font-size:13px;line-height:1.6;margin-top:4px;color:#dce7de}
+.hero-workshop-photos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;width:420px;max-width:100%}
+.hero-workshop-photos a{display:block;min-width:0}
+.hero-workshop-photos img{width:100%;height:64px;object-fit:cover}
+.hero-workshop-photos a>span{display:flex;justify-content:space-between;gap:8px;font-size:12px;line-height:1.6;padding-top:6px}
+.hero-workshop-photos a:hover>span{text-decoration:underline;text-underline-offset:4px}
+.hero-workshop-photos a:focus-visible{outline-color:var(--seed)}
+@media(max-width:950px){.hero-workshop-proof{order:6}}
+@media(max-width:768px){
+ .hero-workshop-proof{align-items:stretch;flex-direction:column;gap:14px;padding:20px 24px}
+ .hero-workshop-photos{width:100%;gap:10px}
+ .hero-workshop-photos img{height:68px}
+}
+
+.hero-v3 .hero-buttons :focus-visible{outline-color:var(--seed)}
+
+/* All three readiness prices stay visible: the headline promises a clear price. */
+.hero-packages{container-type:inline-size;margin:22px 0 0;padding:0;border:0;min-width:0}
+.hero-packages legend{padding:0;margin-bottom:10px;font-size:14px;line-height:1.5;font-weight:600}
+.hero-package{display:grid;grid-template-columns:18px minmax(0,1fr) auto;align-items:center;gap:4px 12px;min-height:52px;padding:10px 16px;background:var(--tint);color:var(--ink);border-radius:var(--control,4px);cursor:pointer;transition:background-color 140ms ease,color 140ms ease}
+.hero-package+.hero-package{margin-top:4px}
+.hero-package input{appearance:none;color:inherit;width:18px;height:18px;margin:0;border:1.5px solid currentColor;border-radius:50%;display:grid;place-items:center;cursor:pointer}
+.hero-package input::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;opacity:0;transform:scale(.4);transition:transform 140ms cubic-bezier(.23,1,.32,1),opacity 140ms ease}
+.hero-package input:checked::before{opacity:1;transform:scale(1)}
+.hero-package input:focus-visible{outline:none}
+.hero-package:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:2px}
+.hero-package-name{font-size:15px;line-height:1.4}
+.hero-package-price{font-size:17px;line-height:1.4;font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.hero-package:has(input:checked){background:var(--accent);color:var(--on-accent)}
+.hero-package:has(input:disabled){cursor:default;opacity:.6}
+@media(hover:hover) and (pointer:fine){.hero-package:not(:has(input:checked)):hover{background:color-mix(in srgb,var(--tint) 88%,var(--ink))}}
+@container (max-width:300px){.hero-package-price{grid-column:2}}
+.hero-package-copy{font-size:14px;line-height:1.6;margin-top:12px;max-width:44ch}
+@media(max-width:950px){
+ .hero-packages{margin-top:16px;max-width:560px}
+ .hero-package{min-height:48px;padding:9px 14px;gap:4px 10px}
+ .hero-package-name{font-size:14px}
+ .hero-package-price{font-size:16px}
+}
+@media(prefers-reduced-motion:reduce){.hero-package,.hero-package input::before{transition:none}}
+
+/* Phone: the promise is explained under the headline, and one clear action leads to the catalogue. */
+.hero-price-note{font-size:13px;line-height:1.65;color:var(--muted);margin-top:14px}
+.hero-model-meta{font-size:14px}
+@media(max-width:950px){.hero-model-meta{font-size:14px;margin-top:6px}.hero-price-note{margin-top:12px}}
+@media(max-width:768px){
+ .hero-v3 .hero-copy h1{margin-bottom:12px}
+ .hero-v3 .hero-copy .hero-lead{display:block;order:2;margin:0 24px 26px;font-size:15px;line-height:1.6;max-width:34ch;color:#dce7de}
+ .hero-v3 .hero-buttons{flex-direction:column;align-items:stretch;gap:6px;margin:24px 24px 8px}
+ .hero-v3 .hero-buttons>.button{justify-content:space-between;min-height:52px;padding:14px 20px;background:var(--seed);color:var(--on-copper);font-size:15px}
+ .hero-v3 .hero-buttons>.text-button{align-self:flex-start;font-size:14px;min-height:44px;text-decoration:underline;text-underline-offset:4px}
+}
+@media(max-width:950px){
+ .hero-offer .button{background:transparent;color:var(--ink);border-color:var(--ink)}
+ .hero-offer .button:hover{background:var(--tint);border-color:var(--ink)}
+}
+
+/* Manufacturing evidence is shown at a size that can be read as photographs. */
+.hero-workshop-proof{padding:24px 28px;gap:40px}
+.hero-workshop-copy strong{font-size:20px;font-family:var(--display);font-weight:400;letter-spacing:-.02em}
+.hero-workshop-copy p{font-size:14px;max-width:30ch}
+.hero-workshop-photos{width:min(640px,62%);gap:14px}
+.hero-workshop-photos img{height:120px}
+.hero-workshop-photos a>span{font-size:14px;padding-top:8px}
+@media(max-width:950px){.hero-workshop-photos{width:100%}}
+@media(max-width:768px){
+ .hero-workshop-proof{padding:22px 24px 26px;gap:16px}
+ .hero-workshop-photos{gap:8px}
+ .hero-workshop-photos img{height:92px}
+ .hero-workshop-photos a>span{font-size:13px}
+}
+
+/* Readable floor for the header and the first screen: nothing a buyer reads sits below 13px. */
+@media(min-width:951px){
+ .desktop-nav a{font-size:14px}
+ .brand-caption-full{font-size:13px;line-height:1.5}
+ .header-actions>.outline{font-size:14px;min-height:48px;padding:12px 20px;gap:20px}
+}
+.hero-v3 .hero-visual .image-caption{font-size:13px}
+
+/* Phone headings stay within two lines: forced desktop breaks are dropped where they add a line. */
+@media(max-width:768px){
+ #packages-title br,.final-section h2 br{display:none}
+ .final-section h2{font-size:25px}
+}
+@media(max-width:370px){
+ #process-title{font-size:24px}
+ .final-section{padding-left:20px;padding-right:20px}
+ .final-section h2{font-size:21px}
+}
+
+/* One authored entrance for the first screen: the promise rises, the house settles, the prices follow.
+   Plays once on load, content is visible without it, and reduced motion skips it. */
+@media(prefers-reduced-motion:no-preference){
+ @keyframes hero-rise{from{opacity:0;transform:translateY(18px)}}
+ @keyframes hero-settle{from{transform:scale(1.04)}}
+ .hero-v3 .hero-visual{overflow:hidden}
+ .hero-v3 .hero-copy h1{animation:hero-rise 720ms cubic-bezier(.23,1,.32,1) both}
+ .hero-v3 .hero-copy h1 span{animation:hero-rise 720ms cubic-bezier(.23,1,.32,1) 90ms both}
+ .hero-v3 .hero-lead{animation:hero-rise 640ms cubic-bezier(.23,1,.32,1) 170ms both}
+ .hero-v3 .hero-buttons{animation:hero-rise 640ms cubic-bezier(.23,1,.32,1) 240ms both}
+ .hero-v3 .hero-visual>img{animation:hero-settle 1400ms cubic-bezier(.23,1,.32,1) both}
+ .hero-offer>h2,.hero-offer>.hero-model-meta{animation:hero-rise 600ms cubic-bezier(.23,1,.32,1) 220ms both}
+ .hero-package{animation:hero-rise 560ms cubic-bezier(.23,1,.32,1) both}
+ .hero-package:nth-of-type(1){animation-delay:300ms}
+ .hero-package:nth-of-type(2){animation-delay:360ms}
+ .hero-package:nth-of-type(3){animation-delay:420ms}
+}

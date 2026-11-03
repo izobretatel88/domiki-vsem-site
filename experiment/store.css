@@ -1,0 +1,114 @@
+/* Store experiment: the catalogue as a showroom.
+   Reference: an online device store. White ground, products on soft rounded tiles,
+   pill buttons, a floating header bar and short headlines that end with a period.
+   Brand palette and typefaces stay; only the composition and surfaces change. */
+:root,:root[data-theme=light]{
+ --bg:#ffffff;--tint:#f1f4f1;--store-tile:#f2f4f1;--store-chip:#dbeadf;--store-shadow:0 1px 3px rgba(16,46,37,.14),0 6px 20px rgba(16,46,37,.07);
+ --store-r:28px;--store-r-lg:32px;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--store-tile:#173127;--store-chip:#2b4a3b;--store-shadow:0 1px 3px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.3)}}
+:root[data-theme=dark]{--store-tile:#173127;--store-chip:#2b4a3b;--store-shadow:0 1px 3px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.3)}
+
+/* Pills everywhere a thing can be pressed. */
+.button,.outline,.text-button.button,.filter,.compare-pick,.gallery-views button,.catalog-options summary,.store-tile-cta{border-radius:100px}
+.button{transition:background-color var(--motion-fast,160ms) ease,transform 160ms cubic-bezier(.23,1,.32,1)}
+.button:active{transform:scale(.97)}
+
+/* A floating header bar. */
+.header{top:8px;margin:8px 8px 0;border:0;border-radius:100px;background:var(--surface);box-shadow:var(--store-shadow)}
+.header-inner{min-height:68px;padding-top:10px;padding-bottom:10px}
+@media(min-width:951px){.header-inner{min-height:72px}}
+.header-actions>.outline{border-radius:100px}
+.mobile-nav{border-radius:0 0 28px 28px}
+
+/* Hero: one centred promise over the forest field, the house on a rounded stage below. */
+.hero-v3 .hero-stage{border-radius:var(--store-r-lg);margin-top:16px}
+@media(min-width:951px){
+ .hero-v3 .hero-copy{grid-template-columns:1fr;text-align:center;align-items:center;justify-items:center;row-gap:20px}
+ .hero-v3 .hero-copy>*,.hero-v3 .hero-copy h1,.hero-v3 .hero-copy .hero-lead,.hero-v3 .hero-copy .hero-buttons{grid-column:1;grid-row:auto}
+ .hero-v3 .hero-copy{padding:56px 38px 52px;border-radius:var(--store-r-lg) var(--store-r-lg) 0 0}
+ .hero-v3 .hero-copy h1{margin-left:auto;margin-right:auto}
+ .hero-v3 .hero-lead{margin-left:auto;margin-right:auto}
+ .hero-v3 .hero-buttons{justify-content:center}
+}
+.hero-v3 .hero-visual{border-radius:var(--store-r-lg);overflow:hidden}
+.hero-v3 .hero-visual>img{border-radius:0}
+.hero-offer{background:var(--store-tile);border:0;border-radius:var(--store-r-lg)}
+.hero-package{border-radius:20px;border:0;background:var(--surface)}
+.hero-package:has(input:checked){background:var(--accent);color:var(--on-accent)}
+.hero-workshop-proof{border-radius:0 0 var(--store-r-lg) var(--store-r-lg);border:0}
+.hero-workshop-photos img{border-radius:16px}
+.image-caption,.hero-visual-caption{border-radius:100px}
+
+/* Shop by type: three big tiles, a picture on a soft field and a name under it. */
+.store-types{padding-top:96px;padding-bottom:24px}
+.store-types h2{font-size:clamp(30px,3.4vw,48px);line-height:1.15;font-weight:600;letter-spacing:-.01em;text-align:center;margin:0 0 40px}
+.store-type-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.store-type{display:grid;gap:14px;justify-items:center;color:var(--ink);text-decoration:none;text-align:center}
+.store-type-media{display:block;width:100%;aspect-ratio:16/10;border-radius:var(--store-r);background:var(--store-tile);overflow:hidden}
+.store-type-media img{width:100%;height:100%;object-fit:cover;transition:transform 600ms cubic-bezier(.23,1,.32,1)}
+.store-type strong{font-size:18px;font-weight:600}
+.store-type span.store-type-price{font-size:15px;color:var(--muted)}
+@media(hover:hover){.store-type:hover .store-type-media img{transform:scale(1.03)}}
+.store-type:focus-visible{outline:2px solid var(--ink);outline-offset:6px;border-radius:var(--store-r)}
+
+/* Catalogue: product tiles. The house sits on a rounded field, name and price below, no frame. */
+.catalog .section-heading{align-items:end}
+.model-card{border:0;background:transparent;box-shadow:none;padding:0}
+.model-image{border-radius:var(--store-r);overflow:hidden;background:var(--store-tile)}
+.model-image img{border-radius:0}
+.model-type{border-radius:100px;background:var(--store-chip);color:var(--ink);border:0;font-weight:600}
+.circle-arrow{border-radius:50%;background:var(--surface);color:var(--ink);border:0}
+.model-info,.model-price{border:0;padding-left:4px;padding-right:4px}
+.model-info h3{font-weight:600}
+.model-price strong{font-weight:600}
+.model-inclusions,.model-price-context{padding-left:4px;padding-right:4px}
+.compare-tray{border-radius:var(--store-r);border:0;background:var(--store-tile)}
+.catalog-options{border:0}
+.catalog-options summary{background:var(--store-tile);border:0}
+.catalog-options-panel{border-radius:var(--store-r);border:0;background:var(--store-tile)}
+.filter{border-color:transparent;background:var(--store-tile)}
+.empty-state{border-radius:var(--store-r)}
+
+/* Packages, process, FAQ: rounded cards on the tint instead of hairline columns. */
+.package-choice{border:0;border-radius:var(--store-r);background:var(--store-tile)}
+.package-choice[aria-pressed=true]{background:var(--accent);color:var(--on-accent)}
+.package-choice[aria-pressed=true] *{color:inherit}
+.package-columns{gap:16px;border:0}
+.production-section{border-radius:var(--store-r-lg);margin-left:8px;margin-right:8px}
+.production-question{border-radius:var(--store-r)}
+.production-tab{border-radius:20px}
+.real-houses img,.production-section img{border-radius:var(--store-r)}
+.process-section li,.process-step{border-radius:var(--store-r)}
+.faq-list details{border:0;border-radius:20px;background:var(--store-tile);padding-left:24px;padding-right:24px;margin-bottom:10px}
+.final-section{border-radius:var(--store-r-lg)}
+.final-note span{border-radius:100px}
+.footer{border-top:0}
+dialog{border-radius:var(--store-r-lg)}
+
+@media(max-width:950px){.store-types{padding-top:64px}}
+@media(max-width:600px){
+ .store-type-grid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:min(78vw,340px);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;margin-right:-20px;padding-right:20px}
+ .store-type{scroll-snap-align:start}
+}
+@media(max-width:768px){
+ .header{top:6px;margin:6px 6px 0}
+ .hero-v3 .hero-stage{border-radius:28px;margin-top:10px}
+ .hero-v3 .hero-visual{border-radius:28px}
+ .production-section{margin-left:0;margin-right:0;border-radius:28px}
+ .store-types h2{text-align:left;margin-bottom:24px}
+}
+
+/* Catalogue as a store shelf: three even tiles, no staggered rows. */
+@media(min-width:1101px){.catalog .model-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 20px}}
+@media(min-width:769px) and (max-width:1100px){.catalog .model-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 20px}}
+.catalog .model-card:nth-child(even){padding-top:0}
+.catalog .model-image,.catalog .model-card:nth-child(even) .model-image{aspect-ratio:4/3}
+.model-specs,.model-specs span,.price-caption,.model-price .text-button,.model-price-context,.model-inclusions summary,.compare-pick{font-size:14px}
+.model-price strong{font-size:22px}
+.packages-section{background:var(--bg)}
+.catalog .model-info{display:block;border-bottom:0;padding-bottom:8px}
+.catalog .model-info h3{margin-bottom:6px}
+.catalog .model-specs{flex-direction:row;justify-content:flex-start;align-items:center;text-align:left;gap:14px}
+.catalog .model-inclusions{border-color:transparent}
+@media(max-width:768px){.header{border-radius:28px}}
