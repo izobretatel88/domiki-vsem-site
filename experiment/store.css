@@ -340,3 +340,11 @@ dialog{border-radius:var(--store-r-lg)}
 .faq-list summary:after{display:inline-block;transition:transform 200ms cubic-bezier(.23,1,.32,1)}
 .faq-list details[open] summary:after{content:'+';transform:rotate(45deg)}
 @media(prefers-reduced-motion:reduce){.faq-list summary:after{transition:none}}
+
+/* Iteration 12: two leftovers of the old square language. The arrow in a catalogue photo's corner took the
+   page ground, so on the dark theme it was a near-black square with an arrow of almost the same colour; it
+   is now a white circle with dark ink on every photo in both themes. The hero's Фасад / Планировка switch
+   was a 3px box; it is now the same pill segmented control as the catalogue's view switch. */
+.model-image .circle-arrow{border-radius:50%;background:#fff;color:#13241d}
+.hero-view-controls{border-radius:100px;padding:4px}
+.hero-view-controls button{border-radius:100px;padding-left:16px;padding-right:16px}
