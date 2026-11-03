@@ -308,3 +308,19 @@ dialog{border-radius:var(--store-r-lg)}
 @media(max-width:370px){main h2:not(.hero-offer h2),.store-types h2,.faq-layout>h2,.final-section h2{font-size:22px}}
 @media(max-width:950px){.final-section h2{font-size:24px}}@media(max-width:370px){.final-section h2{font-size:21px}}
 @media(max-width:768px){.production-tab-title{font-size:16px;font-weight:600;line-height:1.35}}
+
+/* Iteration 9: packages read like store options. The level note follows the name instead of sitting above it
+   as a kicker, the choice is a real pill at the foot of the card, and the selected card is a sage field
+   with a dark ring, as the reference marks a chosen option, instead of a copper or forest block. */
+.package-choice{display:flex;flex-direction:column;cursor:pointer;transition:background-color 200ms ease,box-shadow 200ms ease}
+.package-choice h3{order:1;margin:0}
+.package-choice .package-index{order:2;margin:6px 0 16px;font-size:14px;color:var(--muted)}
+.package-choice p{order:3}
+.package-choice ul{order:4}
+.package-choice:after{order:5;content:'Выбрать';align-self:flex-start;margin-top:auto;padding:10px 20px;border-radius:100px;font-size:14px;font-weight:600;line-height:1.2;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--field-border)}
+.package-choice ul{margin-bottom:24px}
+.package-columns .package-choice.package-featured,.package-choice[aria-pressed=true]{background:var(--sage);color:var(--ink);box-shadow:inset 0 0 0 2px var(--action)}
+.package-columns .package-featured p,.package-featured .package-index,.package-choice[aria-pressed=true] p{color:var(--ink)}
+.package-columns .package-featured li:before{color:var(--accent)}
+.package-choice.package-featured:after,.package-choice[aria-pressed=true]:after{content:'Выбрано';background:var(--action);color:var(--action-ink);box-shadow:none}
+@media(hover:hover){.package-choice:not(.package-featured):hover{background:var(--sage)}}
