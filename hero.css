@@ -205,3 +205,14 @@
  .header-actions>.outline{font-size:14px;min-height:48px;padding:12px 20px;gap:20px}
 }
 .hero-v3 .hero-visual .image-caption{font-size:13px}
+
+/* Phone headings stay within two lines: forced desktop breaks are dropped where they add a line. */
+@media(max-width:768px){
+ #packages-title br,.final-section h2 br{display:none}
+ .final-section h2{font-size:25px}
+}
+@media(max-width:370px){
+ #process-title{font-size:24px}
+ .final-section{padding-left:20px;padding-right:20px}
+ .final-section h2{font-size:21px}
+}
