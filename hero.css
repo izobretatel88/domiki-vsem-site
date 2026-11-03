@@ -128,3 +128,14 @@
  .hero-visual.is-plan .image-caption{display:none}
  .hero-plan-full{right:12px;bottom:4px}
 }
+
+.hero-change-package,.hero-edition-done{display:none}
+@media(max-width:950px){
+ .hero-offer-price>#hero-package-name{display:none}
+ .hero-change-package{display:flex;align-items:center;justify-content:space-between;gap:8px;max-width:15ch;min-height:44px;padding:3px 0;background:transparent;color:var(--ink);border:0;font:inherit;font-size:12px;text-align:left;cursor:pointer}
+ .hero-change-package>span:first-child{text-decoration:underline;text-underline-offset:4px;line-height:1.6}
+ .hero-change-package>span:last-child{font-size:18px}
+ .hero-offer.is-editing .hero-edition-control{display:block;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+ .hero-offer.is-editing .hero-edition-control p{display:block}
+ .hero-edition-done{display:inline-flex;min-height:44px;font-size:14px;margin-top:8px;color:var(--ink)}
+}

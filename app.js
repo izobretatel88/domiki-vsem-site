@@ -44,8 +44,23 @@ function renderHeroOffer(){
  const edition=Number($('#hero-edition').value);
  $('#hero-price').textContent=money(model.prices[edition]);
  $('#hero-package-name').textContent=packageNames[edition];
+ $('#hero-mobile-package').textContent=packageNames[edition];
+ $('#hero-change-package').setAttribute('aria-label','Сменить комплектацию: '+packageNames[edition]);
  $('#hero-package-copy').textContent=packageCopy[edition];
 }
+function toggleHeroEdition(open,restoreFocus=false){
+ $('.hero-offer').classList.toggle('is-editing',open);
+ $('#hero-change-package').setAttribute('aria-expanded',String(open));
+ if(restoreFocus)$('#hero-change-package').focus({preventScroll:true});
+}
+$('#hero-change-package').addEventListener('click',()=>toggleHeroEdition(!$('.hero-offer').classList.contains('is-editing')));
+$('#hero-edition-done').addEventListener('click',()=>toggleHeroEdition(false,true));
+$('.hero-offer').addEventListener('keydown',e=>{
+ if(e.key==='Escape'&&$('.hero-offer').classList.contains('is-editing')){e.preventDefault();toggleHeroEdition(false,true);}
+});
+matchMedia('(min-width:951px)').addEventListener('change',e=>{
+ if(e.matches&&(document.activeElement===$('#hero-change-package')||document.activeElement===$('#hero-edition-done')))$('#hero-edition').focus({preventScroll:true});
+});
 $('#hero-edition').addEventListener('change',renderHeroOffer);
 $('#hero-catalog-open').addEventListener('click',()=>applyCatalogEdition(Number($('#hero-edition').value)));
 $('#hero-model-open').addEventListener('click',()=>houseChoices.set('1',{edition:Number($('#hero-edition').value),gallery:1}));
