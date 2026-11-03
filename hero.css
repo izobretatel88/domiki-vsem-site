@@ -162,3 +162,10 @@
 .hero-image-feedback .button{min-height:44px;background:var(--accent);color:var(--on-accent);font-size:14px;padding:12px 18px}
 .hero-image-feedback .button:focus-visible{outline-color:var(--accent)}
 .hero-visual.is-image-pending>img,.hero-visual.is-image-error>img,.hero-visual.is-image-pending>.image-caption,.hero-visual.is-image-error>.image-caption{visibility:hidden}
+
+.hero-data-feedback{margin-top:20px;font-size:14px;line-height:1.6;color:var(--ink)}
+.hero-data-feedback .text-button{min-height:44px;font-size:14px;margin-top:8px;text-decoration:underline;text-underline-offset:4px}
+.hero-offer.has-data-error .hero-offer-price,.hero-offer.has-data-error .hero-edition-control,.hero-offer.has-data-error .hero-price-date,.hero-offer.has-data-error #hero-model-open{display:none}
+.catalog-load-error{max-width:48ch;padding:24px 0}
+.catalog-load-error h3{font-size:24px;line-height:1.4;margin-bottom:12px}
+.catalog-load-error p{font-size:16px;line-height:1.6;margin-bottom:20px}

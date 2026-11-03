@@ -97,7 +97,7 @@ $('#hero-catalog-open').addEventListener('click',()=>applyCatalogEdition(Number(
 $('#hero-model-open').addEventListener('click',()=>houseChoices.set('1',{edition:Number($('#hero-edition').value),gallery:1}));
 function applyCatalogEdition(index){state.catalogEdition=index;houseChoices.clear();$('#catalog-edition').value=String(index);$('#catalog-edition-note').textContent=packageCopy[index];renderCatalog();}
 $('#catalog-edition').addEventListener('change',e=>applyCatalogEdition(Number(e.target.value)));
-function renderCatalog(){$('#catalog-options-summary').textContent=({all:'Любая площадь',small:'До 40 м²',medium:'40–60 м²',large:'От 60 м²'})[state.area]+' · '+packageNames[state.catalogEdition];const list=models.filter(m=>(state.category==='all'||m.categoryKey===state.category)&&(state.area==='all'||(state.area==='small'&&m.area<40)||(state.area==='medium'&&m.area>=40&&m.area<60)||(state.area==='large'&&m.area>=60)));$('#model-grid').innerHTML=list.map(m=>modelCard(m,true)).join('');$('#catalog-count').textContent=list.length+' '+(['модель','модели','моделей'][list.length===1?0:list.length>1&&list.length<5?1:2])+' в подборке';$('#catalog-empty').hidden=!!list.length;updateComparison();}
+function renderCatalog(){if(!models.length)return;$('#catalog-options-summary').textContent=({all:'Любая площадь',small:'До 40 м²',medium:'40–60 м²',large:'От 60 м²'})[state.area]+' · '+packageNames[state.catalogEdition];const list=models.filter(m=>(state.category==='all'||m.categoryKey===state.category)&&(state.area==='all'||(state.area==='small'&&m.area<40)||(state.area==='medium'&&m.area>=40&&m.area<60)||(state.area==='large'&&m.area>=60)));$('#model-grid').innerHTML=list.map(m=>modelCard(m,true)).join('');$('#catalog-count').textContent=list.length+' '+(['модель','модели','моделей'][list.length===1?0:list.length>1&&list.length<5?1:2])+' в подборке';$('#catalog-empty').hidden=!!list.length;updateComparison();}
 
 function updateComparison(){
  const chosen=models.filter(m=>comparison.has(m.id));
@@ -145,6 +145,7 @@ function route(){
  const hash=location.hash;
  const match=hash.match(/^#house-(\d+)$/);
  const detail=!!match;
+ if(detail&&!models.length){$('#home-page').hidden=false;$('#detail-page').hidden=true;$('#catalog').scrollIntoView({block:'start'});$('#catalog-load-title')?.focus({preventScroll:true});return;}
  const leavingDetail=!$('#detail-page').hidden;
  const fromMenu=menuNavigation;menuNavigation=false;
  $('#home-page').hidden=detail;$('#detail-page').hidden=!detail;
@@ -247,7 +248,40 @@ function resultRows(){const m=models.find(x=>x.id===quiz.model);return [...(quiz
 function requestText(){return 'Домики-Всем — пример заявки\nДемонстрация. Заявка не отправлена.\nЦена комплектации не является итоговой стоимостью на участке.\n\n'+resultRows().map(([a,b])=>a+': '+b).join('\n');}
 function renderResult(){$('#quiz-content').innerHTML=`<div class="success-symbol" aria-hidden="true">✓</div><p class="quiz-step-label">Так будет выглядеть обращение</p><h2 class="quiz-title" id="quiz-title" tabindex="-1">Ваши пожелания собраны.</h2><p class="quiz-description">Это пример заявки. Она не отправлена компании. В рабочем сайте эти данные получит менеджер для подготовки расчёта.</p><dl class="result-list">${resultRows().map(([a,b])=>`<dt>${esc(a)}</dt><dd>${esc(b)}</dd>`).join('')}</dl><div class="quiz-actions"><button class="text-button" id="edit-result">← Изменить</button><button class="button" id="copy-result">Скопировать пожелания</button></div><div class="result-export"><button class="text-button" id="download-result">Скачать текстовый файл ↓</button><p id="copy-status" role="status" aria-atomic="true"></p></div>`;$('#quiz-title').focus({preventScroll:true});$('#edit-result').addEventListener('click',()=>{quiz.step=3;renderQuiz();});$('#copy-result').addEventListener('click',async()=>{const button=$('#copy-result');const status=$('#copy-status');button.disabled=true;button.textContent='Копируем…';try{await navigator.clipboard.writeText(requestText());button.textContent='Скопировано';status.textContent='Пожелания скопированы. Их можно вставить в сообщение. Компания их ещё не получила.';}catch{button.textContent='Скопировать пожелания';status.textContent='Браузер не разрешил копирование. Скачайте текстовый файл ниже.';}finally{button.disabled=false;}});$('#download-result').addEventListener('click',()=>{const text=requestText();const url=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='domiki-vsem-primer-zayavki.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});}
 const infoDialog=$('#info-dialog');$('#concept-info').addEventListener('click',()=>{lastFocused=document.activeElement;infoDialog.showModal();document.body.style.overflow='hidden';});$('.close-info').addEventListener('click',()=>infoDialog.close());infoDialog.addEventListener('close',()=>{document.body.style.overflow='';lastFocused?.focus()});
-async function init(){try{const response=await fetch('models.json');if(!response.ok)throw new Error('Каталог недоступен');models=await response.json();renderCatalog();renderHeroOffer();route();}catch(e){$('#catalog-count').textContent='Не удалось загрузить модели';$('#model-grid').innerHTML='<p>Обновите страницу, чтобы загрузить каталог. Для локального просмотра запустите сервер по инструкции в проекте.</p>';console.error(e);}}
+let catalogLoading=false;
+async function init(){
+ if(catalogLoading)return;
+ catalogLoading=true;
+ const origin=document.activeElement?.id;
+ const dependent=[$('#hero-edition'),$('#hero-change-package'),$('#mobile-menu-quiz'),...$$('[data-quiz]')];
+ dependent.forEach(el=>el.disabled=true);
+ $('#hero-data-retry').disabled=true;
+ if($('#catalog-data-retry'))$('#catalog-data-retry').disabled=true;
+ if(!$('#hero-data-feedback').hidden)$('#hero-data-status').textContent='Загружаем каталог…';
+ try{
+  const response=await fetch('models.json',{cache:'no-store'});
+  if(!response.ok)throw new Error('Каталог недоступен');
+  const data=await response.json();
+  if(!Array.isArray(data)||!data.some(m=>m.id==='1'&&Array.isArray(m.prices)&&m.prices.length===3))throw new Error('Неверные данные каталога');
+  models=data;
+  $('#hero-data-feedback').hidden=true;$('.hero-offer').classList.remove('has-data-error');
+  renderCatalog();renderHeroOffer();
+  if(!['hero-data-retry','catalog-data-retry'].includes(origin)||/^#house-\d+$/.test(location.hash))route();
+ }catch(e){
+  $('.hero-offer').classList.add('has-data-error');$('#hero-data-feedback').hidden=false;
+  $('#hero-data-status').textContent='Каталог не загрузился. Чтобы сравнить комплектации и цены, повторите загрузку.';
+  $('#catalog-count').textContent='Каталог временно недоступен';
+  $('#model-grid').innerHTML='<div class="catalog-load-error"><h3 id="catalog-load-title" tabindex="-1">Каталог не загрузился</h3><p>Проверьте соединение и попробуйте ещё раз. Изображение дома на первом экране можно рассмотреть отдельно.</p><button class="button" id="catalog-data-retry" type="button">Повторить загрузку каталога ↻</button></div>';
+  $('#catalog-data-retry').addEventListener('click',init);
+  console.error(e);
+ }finally{
+  catalogLoading=false;dependent.forEach(el=>el.disabled=!models.length);$('#hero-data-retry').disabled=false;
+  if(!models.length&&['hero-data-retry','catalog-data-retry'].includes(origin))$('#'+origin).focus({preventScroll:true});
+  if(models.length&&$('#detail-page').hidden&&origin==='hero-data-retry')$(matchMedia('(max-width:950px)').matches?'#hero-change-package':'#hero-edition').focus({preventScroll:true});
+  if(models.length&&$('#detail-page').hidden&&origin==='catalog-data-retry'){$('#catalog-title').tabIndex=-1;$('#catalog-title').focus({preventScroll:true});}
+ }
+}
+$('#hero-data-retry').addEventListener('click',init);
 init();
 
 $('#tour-request')?.addEventListener('click',()=>openQuiz(null,false,'tour'));
