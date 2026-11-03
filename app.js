@@ -37,6 +37,7 @@ $$('[data-hero-view]').forEach(button=>button.addEventListener('click',()=>{
  img.closest('.hero-visual').classList.toggle('is-plan',plan);
  $('#hero-plan-full').hidden=!plan;
  $('#hero-image-caption').textContent=plan?'Планировка из каталога':'Визуализация из каталога';
+ $('#hero-price-scope').textContent=plan?'Мебель и сантехника на плане — условные обозначения. Состав и работы на участке — по смете.':'Фундамент, доставка, монтаж и инженерия — по смете. Состав на изображении нужно сверить.';
  $$('[data-hero-view]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
 }));
 function renderHeroOffer(){

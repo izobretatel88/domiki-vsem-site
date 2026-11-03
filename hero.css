@@ -139,3 +139,7 @@
  .hero-offer.is-editing .hero-edition-control p{display:block}
  .hero-edition-done{display:inline-flex;min-height:44px;font-size:14px;margin-top:8px;color:var(--ink)}
 }
+
+/* Describe the actual plan before asking the visitor to decode a floor area. */
+.hero-model-meta{line-height:1.65;max-width:36ch}
+.hero-offer-label{line-height:1.6}
