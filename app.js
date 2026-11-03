@@ -17,6 +17,7 @@ let comparisonOpen=false;
 let contactDrafts={};
 let galleryTimer=null;
 let catalogOrigin=null;
+let menuNavigation=false;
 // Hash routes own scrolling; native history restoration would compete with it.
 if('scrollRestoration' in history)history.scrollRestoration='manual';
 document.addEventListener('click',e=>{
@@ -78,6 +79,7 @@ function route(){
  const match=hash.match(/^#house-(\d+)$/);
  const detail=!!match;
  const leavingDetail=!$('#detail-page').hidden;
+ const fromMenu=menuNavigation;menuNavigation=false;
  $('#home-page').hidden=detail;$('#detail-page').hidden=!detail;
  updateComparison();
  if(detail){
@@ -98,17 +100,45 @@ function route(){
    }else{
     if(target)target.scrollIntoView({behavior:'instant'});
     else window.scrollTo({top:0,behavior:'instant'});
-    if(leavingDetail){
+    if(leavingDetail||fromMenu){
      const heading=target?.querySelector('h1,h2')||$('#hero-title');
      heading.tabIndex=-1;heading.focus({preventScroll:true});
     }
    }
   });
  }
- $('.mobile-nav').hidden=true;$('.menu-button').setAttribute('aria-expanded','false');
+ setMobileMenu(false);
 }
 window.addEventListener('hashchange',route);
-$('.menu-button').addEventListener('click',()=>{const menu=$('.mobile-nav');menu.hidden=!menu.hidden;$('.menu-button').setAttribute('aria-expanded',!menu.hidden);});
+function setMobileMenu(open,restoreFocus=false){
+ const button=$('.menu-button');$('.mobile-nav').hidden=!open;
+ button.setAttribute('aria-expanded',String(open));
+ button.setAttribute('aria-label',open?'Закрыть меню':'Открыть меню');
+ button.textContent=open?'✕':'☰';
+ if(restoreFocus)button.focus({preventScroll:true});
+}
+$('.menu-button').addEventListener('click',()=>setMobileMenu($('.mobile-nav').hidden));
+$('.mobile-nav').addEventListener('click',e=>{
+ const link=e.target.closest('a');
+ if(!link||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+ e.preventDefault();menuNavigation=true;
+ if(location.hash===link.hash)route();else location.hash=link.hash;
+});
+document.addEventListener('keydown',e=>{
+ if(e.key==='Escape'&&!$('.mobile-nav').hidden){e.preventDefault();setMobileMenu(false,true);}
+});
+document.addEventListener('pointerdown',e=>{
+ if(!$('.mobile-nav').hidden&&!$('.header').contains(e.target))setMobileMenu(false);
+});
+document.addEventListener('focusin',e=>{
+ if(!$('.mobile-nav').hidden&&!$('.header').contains(e.target))setMobileMenu(false);
+});
+matchMedia('(min-width:769px)').addEventListener('change',e=>{
+ if(!e.matches)return;
+ const active=document.activeElement;
+ if(active===$('.menu-button')||$('.mobile-nav').contains(active))$('.desktop-nav a')?.focus({preventScroll:true});
+ setMobileMenu(false);
+});
 $('.theme-toggle').addEventListener('click',()=>{const current=document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.dataset.theme=current==='dark'?'light':'dark';});
 const productionLabels={drying:'Сушильная камера',treatment:'Ванна для защитной обработки древесины',painting:'Покрасочный цех',warehouse:'Склад материалов под навесом'};
 const productionQuestions={
