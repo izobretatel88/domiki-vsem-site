@@ -64,7 +64,7 @@
 .hero-offer .button{width:100%;font-size:14px;min-height:48px;justify-content:space-between;gap:14px;margin-top:auto}
 .hero-offer :focus-visible{outline-color:var(--accent)}
 @media(max-width:1100px) and (min-width:769px){
- .hero-v3 .hero-featured{grid-template-columns:minmax(0,1.7fr) minmax(290px,1fr)}
+ .hero-v3 .hero-featured{grid-template-columns:minmax(0,1.5fr) minmax(290px,1fr)}
  .hero-offer{padding:24px}
  .hero-offer h2{font-size:23px}
  .hero-offer-price strong{font-size:30px}
@@ -148,4 +148,11 @@
 @media(max-width:950px){
  .hero-v3 .hero-featured .hero-visual.is-plan{height:auto;min-height:0}
  .hero-v3 .hero-featured .hero-visual.is-plan>img{position:relative;inset:auto;display:block;width:calc(100% - 24px);height:auto;max-height:380px;box-sizing:content-box;padding:66px 12px 48px}
+}
+
+.hero-edition-control .hero-package-delta{font-size:12px;line-height:1.5;margin-top:6px;color:var(--ink);font-weight:600}
+
+@media(min-width:951px){
+ .hero-edition-control{margin-top:18px}
+ .hero-offer-price{margin-top:20px}
 }

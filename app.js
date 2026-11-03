@@ -49,6 +49,8 @@ function renderHeroOffer(){
  $('#hero-mobile-package').textContent=packageNames[edition];
  $('#hero-change-package').setAttribute('aria-label','Сменить комплектацию: '+packageNames[edition]);
  $('#hero-package-copy').textContent=packageCopy[edition];
+ const increase=edition===0?model.prices[1]-model.prices[0]:model.prices[edition]-model.prices[edition-1];
+ $('#hero-package-delta').textContent=edition===0?'Тёплый контур: +'+money(increase):'+'+money(increase)+(edition===1?' к холодному контуру':' к тёплому контуру');
 }
 function toggleHeroEdition(open,restoreFocus=false){
  $('.hero-offer').classList.toggle('is-editing',open);
