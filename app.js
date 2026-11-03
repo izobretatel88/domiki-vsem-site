@@ -32,6 +32,7 @@ const heroFacade={src:$('#hero-image').getAttribute('src'),srcset:$('#hero-image
 $$('[data-hero-view]').forEach(button=>button.addEventListener('click',()=>{
  const plan=button.dataset.heroView==='plan';const img=$('#hero-image');
  img.srcset=plan?'':heroFacade.srcset;img.sizes=plan?'':heroFacade.sizes;
+ img.width=plan?1537:1600;img.height=1200;
  img.src=plan?'assets/house-1-2.webp':heroFacade.src;
  img.alt=plan?'Планировка дачного домика 8×6 из каталога компании':'Дачный домик 8×6: визуализация из каталога компании';
  img.closest('.hero-visual').classList.toggle('is-plan',plan);

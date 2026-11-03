@@ -143,3 +143,9 @@
 /* Describe the actual plan before asking the visitor to decode a floor area. */
 .hero-model-meta{line-height:1.65;max-width:36ch}
 .hero-offer-label{line-height:1.6}
+
+/* A requested plan needs readable space on phones, rather than a fixed photo crop. */
+@media(max-width:950px){
+ .hero-v3 .hero-featured .hero-visual.is-plan{height:auto;min-height:0}
+ .hero-v3 .hero-featured .hero-visual.is-plan>img{position:relative;inset:auto;display:block;width:calc(100% - 24px);height:auto;max-height:380px;box-sizing:content-box;padding:66px 12px 48px}
+}
