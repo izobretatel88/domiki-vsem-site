@@ -367,3 +367,19 @@ dialog{border-radius:var(--store-r-lg)}
 #quiz-dialog .choice.selected:after,#quiz-dialog .choice[aria-pressed=true]:after{content:' ✓'}
 @media(hover:hover){#quiz-dialog .choice:not(.selected):hover{background:var(--sage)}}
 @media(prefers-reduced-motion:reduce){#quiz-dialog .choice{transition:none}#quiz-dialog .choice:active{transform:none}}
+
+/* Iteration 15: the quiz's second step still spoke the old square language: each suggested house was a
+   1px-ruled box with a square photo, and the edition picker a 7px box. The houses are now soft tiles like
+   the quiz options (a chosen one gets the sage field and dark ring), with rounded photos, and the picker
+   is the same pill select as the catalogue toolbar. */
+#quiz-dialog .preview-house{border:0;border-radius:20px;background:var(--store-tile);padding:10px;transition:background-color 160ms ease,box-shadow 160ms ease,transform 160ms cubic-bezier(.23,1,.32,1)}
+#quiz-dialog .preview-house img{border-radius:14px}
+#quiz-dialog .preview-house:active{transform:scale(.98)}
+#quiz-dialog .preview-house.selected,#quiz-dialog .preview-house[aria-pressed=true]{border:0;background:var(--sage);box-shadow:inset 0 0 0 2px var(--action)}
+@media(hover:hover){#quiz-dialog .preview-house:not(.selected):hover{background:var(--sage)}}
+#quiz-dialog .preview-edition{border:0;border-radius:100px;background-color:var(--store-tile);padding:12px 40px 12px 20px;min-height:48px}
+@media(prefers-reduced-motion:reduce){#quiz-dialog .preview-house{transition:none}#quiz-dialog .preview-house:active{transform:none}}
+/* Step three: the chosen-house summary and the text fields round to the same 16px family. The fields keep
+   their visible border, which is what tells a person where to type. */
+#quiz-dialog .contact-summary{border-radius:16px}
+#quiz-dialog input[type=text],#quiz-dialog input:not([type]),#quiz-dialog input[type=tel],#quiz-dialog textarea{border-radius:14px}
