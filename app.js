@@ -216,6 +216,12 @@ const productionQuestions={
  warehouse:['Как материалы дождутся сборки?','Обсудите условия хранения и порядок защиты материалов на время доставки и сборки. Фотография показывает склад из архива компании.']
 };
 $$('[data-production]').forEach(b=>b.addEventListener('click',()=>{$$('[data-production]').forEach(x=>{const active=x===b;x.classList.toggle('active',active);x.setAttribute('aria-pressed',active)});$('#production-image').src='assets/'+b.dataset.production+'.webp';$('#production-image').alt=productionLabels[b.dataset.production]+' на производстве Домики-Всем';$('#production-full').href='assets/'+b.dataset.production+'.webp';$('#production-full').setAttribute('aria-label','Рассмотреть фото: '+b.querySelector('.production-tab-title').textContent.replace('↗','').trim()+' (новая вкладка)');const question=productionQuestions[b.dataset.production];$('#production-question-title').textContent=question[0];$('#production-question-copy').textContent=question[1];}));
+$$('[data-production-preview]').forEach(link=>link.addEventListener('click',e=>{
+ if(e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+ $('[data-production="'+link.dataset.productionPreview+'"]').click();
+ menuNavigation=true;
+ if(location.hash==='#production'){e.preventDefault();route();}
+}));
 function openQuiz(id=null,fromDetail=false,purpose=null,edition=null){contactDrafts={};lastFocused=document.activeElement;quiz={purpose,model:id,edition:fromDetail?state.edition:edition,area:id?(models.find(m=>m.id===id).area<40?'До 40 м²':models.find(m=>m.id===id).area<60?'40–60 м²':'60–80 м²'):'',season:'',place:'',method:'Telegram',name:'',contact:'',canCall:false,step:purpose?3:1};quizDialog.showModal();document.body.style.overflow='hidden';renderQuiz();}
 function closeQuiz(){quizDialog.close();}
 $('#mobile-menu-quiz').addEventListener('click',()=>{setMobileMenu(false,true);openQuiz();});
