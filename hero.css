@@ -197,3 +197,11 @@
  .hero-workshop-photos img{height:92px}
  .hero-workshop-photos a>span{font-size:13px}
 }
+
+/* Readable floor for the header and the first screen: nothing a buyer reads sits below 13px. */
+@media(min-width:951px){
+ .desktop-nav a{font-size:14px}
+ .brand-caption-full{font-size:13px;line-height:1.5}
+ .header-actions>.outline{font-size:14px;min-height:48px;padding:12px 20px;gap:20px}
+}
+.hero-v3 .hero-visual .image-caption{font-size:13px}
