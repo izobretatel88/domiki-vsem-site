@@ -304,3 +304,16 @@ $$('[data-catalog-view]').forEach(button=>button.addEventListener('click',()=>{
  $$('[data-catalog-view]').forEach(b=>b.setAttribute('aria-pressed',b===button));
  renderCatalog();
 }));
+
+// Store experiment: section parts rise in as they reach the viewport. Content stays visible
+// without script, without IntersectionObserver and under reduced motion.
+(()=>{
+ if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ const groups=['.store-types h2','.store-type','.section-heading','.package-choice','.production-top','.production-tab','.real-houses figure','.process-list li','.faq-layout>h2','.faq-list details','.final-section'];
+ const items=[];
+ groups.forEach(sel=>$$(sel).forEach((el,i)=>{el.style.setProperty('--reveal-i',i%4);items.push(el)}));
+ if(!items.length)return;
+ document.documentElement.classList.add('js-reveal');
+ const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+ items.forEach(el=>{el.classList.add('reveal');io.observe(el)});
+})();
