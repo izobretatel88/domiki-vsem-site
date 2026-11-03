@@ -155,3 +155,34 @@ dialog{border-radius:var(--store-r-lg)}
  .store-type strong{align-self:end}
  .store-type span.store-type-price{align-self:start}
 }
+
+/* Iteration 3: the reference's colour roles. White page, pale sage for highlighted fields
+   (the panel behind the product), near-black green for actions. Dark theme keeps the forest field. */
+:root{
+ --hero-bg:var(--forest);--hero-ink:var(--on-forest);--hero-soft:#dce7de;--hero-accent:var(--seed);
+ --action:var(--seed);--action-ink:var(--on-copper);--action-hover:#f7c9a9;--sage:#233e31;
+}
+@media(prefers-color-scheme:light){:root:not([data-theme=dark]){
+ --hero-bg:#e9efe4;--hero-ink:#13241d;--hero-soft:#2c4438;--hero-accent:#2e6a4c;
+ --action:#13241d;--action-ink:#ffffff;--action-hover:#24402f;--sage:#e9efe4;--store-tile:#f3f4f1;--store-chip:#e9efe4;
+}}
+:root[data-theme=light]{
+ --hero-bg:#e9efe4;--hero-ink:#13241d;--hero-soft:#2c4438;--hero-accent:#2e6a4c;
+ --action:#13241d;--action-ink:#ffffff;--action-hover:#24402f;--sage:#e9efe4;--store-tile:#f3f4f1;--store-chip:#e9efe4;
+}
+.hero-v3 .hero-copy,.hero-workshop-proof{background:var(--hero-bg);color:var(--hero-ink)}
+.hero-v3 .hero-copy h1{color:var(--hero-ink)}
+.hero-v3 .hero-copy h1 span{color:var(--hero-accent)}
+.hero-v3 .hero-copy .hero-lead,.hero-workshop-copy p,.hero-workshop-photos span{color:var(--hero-soft)}
+.hero-workshop-copy strong,.hero-workshop-photos a{color:var(--hero-ink)}
+.hero-v3 .hero-copy .text-button{color:var(--hero-ink)}
+.hero-v3 .hero-copy :focus-visible,.hero-workshop-photos a:focus-visible{outline-color:var(--hero-ink)}
+.button:not(.outline),.hero-copy .button,.hero-v3 .hero-buttons>.button,.final-section .button,.header-actions>.outline{background:var(--action);color:var(--action-ink);border-color:var(--action)}
+.button:not(.outline):hover,.hero-copy .button:hover,.final-section .button:hover,.header-actions>.outline:hover{background:var(--action-hover);border-color:var(--action-hover);color:var(--action-ink)}
+.hero-offer{background:var(--store-tile)}
+.store-type-media,.catalog-help,.readiness-summary{background:var(--sage)}
+.final-section{background:var(--sage);color:var(--ink)}
+.final-section h2{color:var(--ink)}
+.final-section p,.final-note span{color:var(--hero-soft)}
+.hero-v3 .hero-stage{background:var(--hero-bg)}
+.final-note span{display:inline-flex;align-items:center;min-height:40px;padding:8px 16px;line-height:1.3}
