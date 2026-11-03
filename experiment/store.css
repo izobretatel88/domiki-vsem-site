@@ -357,3 +357,13 @@ dialog{border-radius:var(--store-r-lg)}
 .compare-tray .button{background:var(--action);color:var(--action-ink)}
 .compare-tray .button:disabled{opacity:.55}
 .compare-tray :focus-visible{outline-color:var(--action)}
+
+/* Iteration 14: the quiz options were 3px outlined boxes with 12px labels, and a chosen option differed from
+   the rest by a 6% grey and a slightly darker hairline. They are now soft tiles at reading size, and a chosen
+   one takes the same sage field and dark ring as a chosen package, with a tick, so the state is unmistakable. */
+#quiz-dialog .choice{border:0;border-radius:16px;background:var(--store-tile);color:var(--ink);font-size:15px;line-height:1.35;min-height:52px;padding:14px 16px;text-align:left;transition:background-color 160ms ease,box-shadow 160ms ease,transform 160ms cubic-bezier(.23,1,.32,1)}
+#quiz-dialog .choice:active{transform:scale(.97)}
+#quiz-dialog .choice.selected,#quiz-dialog .choice[aria-pressed=true]{background:var(--sage);box-shadow:inset 0 0 0 2px var(--action);font-weight:600}
+#quiz-dialog .choice.selected:after,#quiz-dialog .choice[aria-pressed=true]:after{content:' ✓'}
+@media(hover:hover){#quiz-dialog .choice:not(.selected):hover{background:var(--sage)}}
+@media(prefers-reduced-motion:reduce){#quiz-dialog .choice{transition:none}#quiz-dialog .choice:active{transform:none}}
