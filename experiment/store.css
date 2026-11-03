@@ -324,3 +324,10 @@ dialog{border-radius:var(--store-r-lg)}
 .package-columns .package-featured li:before{color:var(--accent)}
 .package-choice.package-featured:after,.package-choice[aria-pressed=true]:after{content:'Выбрано';background:var(--action);color:var(--action-ink);box-shadow:none}
 @media(hover:hover){.package-choice:not(.package-featured):hover{background:var(--sage)}}
+
+/* Iteration 10: the three closing reasons were a tint of the light theme's ink, which vanished on the dark
+   theme's forest panel; they now take their tint from the panel's own ink so both themes show them as chips.
+   The footer's links are read and tapped like the header's, at 16px with a 44px target. */
+.final-note span{background:color-mix(in srgb,var(--hero-ink) 10%,transparent);color:var(--hero-ink)}
+.footer nav a,.footer nav .text-button{display:inline-flex;align-items:center;min-height:44px;font-size:16px;font-weight:500}
+.footer-top>p{color:var(--ink)}
