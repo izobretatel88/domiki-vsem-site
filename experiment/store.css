@@ -445,3 +445,7 @@ dialog{border-radius:var(--store-r-lg)}
 .breadcrumbs,.breadcrumbs a,.breadcrumbs span,.detail-specs dt,.mobile-price-summary span,.mobile-price-summary p,.mobile-price-summary .text-button,.gallery-views>span,.photo-disclosure,.package-option-delta,.detail-total>span,.detail-total>p,.detail-total .button,.detail-packages #show-cost,.detail-total p.photo-price-note,.cost-base small,.cost-intro .button,.cost-lines summary small{font-size:14px}
 .detail-text p,.cost-result p{font-size:16px}
 .mobile-price-summary{border-bottom:0}
+/* Dialog labels join the 14px floor; breadcrumbs and gallery arrows get a full 44px touch target without moving. */
+.dialog-brand,#info-dialog .button{font-size:14px}
+.breadcrumbs a{display:inline-block;padding:11px 0;margin:-11px 0}
+.gallery-arrow{width:44px;height:44px}
