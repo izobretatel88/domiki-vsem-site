@@ -497,3 +497,5 @@ dialog .dialog-header{border-bottom:0}
 .compare-tray:not([hidden]){translate:0 0;opacity:1;transition:translate 240ms cubic-bezier(.23,1,.32,1),opacity 240ms cubic-bezier(.23,1,.32,1)}
 @starting-style{.compare-tray:not([hidden]){translate:0 16px;opacity:0}}
 @media(prefers-reduced-motion:reduce){.compare-tray:not([hidden]){transition:none}}
+/* Iteration 36: on phone the facades/plans switch starts at the left edge like the rows around it. */
+@media(max-width:768px){.store-toolbar .catalog-view{margin-left:0;align-self:flex-start}}
