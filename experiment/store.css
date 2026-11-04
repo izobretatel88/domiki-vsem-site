@@ -499,3 +499,10 @@ dialog .dialog-header{border-bottom:0}
 @media(prefers-reduced-motion:reduce){.compare-tray:not([hidden]){transition:none}}
 /* Iteration 36: on phone the facades/plans switch starts at the left edge like the rows around it. */
 @media(max-width:768px){.store-toolbar .catalog-view{margin-left:0;align-self:flex-start}}
+/* Iteration 37: the chosen production step reads as chosen — a light chip on the dark field, like the other picks on the page. */
+.production-section .production-tab{transition:background-color 160ms ease,transform 160ms ease}
+.production-section .production-tab.active{background:var(--sage)}
+.production-section .production-tab.active,.production-section .production-tab.active .production-tab-title,.production-section .production-tab.active .production-tab-copy,.production-section .production-tab.active .production-tab-title>span{color:#183a25}
+@media(hover:hover){.production-section .production-tab:not(.active):hover{background:rgba(248,248,239,.12)}}
+.production-section .production-tab:active{transform:scale(.98)}
+@media(prefers-reduced-motion:reduce){.production-section .production-tab{transition:none}.production-section .production-tab:active{transform:none}}
