@@ -492,3 +492,8 @@ dialog .dialog-header{border-bottom:0}
 @media(hover:hover){.compare-pick[aria-pressed=false]:hover{background:var(--sage)}}
 .compare-pick:active{transform:scale(.97)}
 @media(prefers-reduced-motion:reduce){.compare-pick{transition:none}.compare-pick:active{transform:none}}
+/* The compare tray: its phone type joins the 14px floor, and it rises in from below when it appears instead of popping in. */
+.compare-tray p,.compare-tray .button,.compare-tray .text-button{font-size:14px}
+.compare-tray:not([hidden]){translate:0 0;opacity:1;transition:translate 240ms cubic-bezier(.23,1,.32,1),opacity 240ms cubic-bezier(.23,1,.32,1)}
+@starting-style{.compare-tray:not([hidden]){translate:0 16px;opacity:0}}
+@media(prefers-reduced-motion:reduce){.compare-tray:not([hidden]){transition:none}}
