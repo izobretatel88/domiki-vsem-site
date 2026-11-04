@@ -484,3 +484,11 @@ dialog .dialog-header{border-bottom:0}
 .house-comparison-table th,.house-comparison-table td{overflow-wrap:normal;hyphens:auto;padding:14px 10px}
 .house-comparison-table tbody tr>:first-child{padding-left:14px}
 @media(max-width:600px){.house-comparison-table thead td{width:32%}}
+/* "Add to compare" was an underlined line whose chosen state only turned bold; it becomes a chip, and the chosen chip takes the sage fill, ring and tick used for every other selection. */
+.compare-pick{display:inline-flex;align-items:center;align-self:flex-start;gap:6px;min-height:44px;padding:0 18px;border-radius:100px;background:var(--store-tile);color:var(--ink);text-decoration:none;font-weight:500;transition:background-color 160ms ease,box-shadow 160ms ease,transform 160ms ease}
+.compare-pick::before{content:'+';font-weight:600}
+.compare-pick[aria-pressed=true]{background:var(--sage);box-shadow:inset 0 0 0 2px var(--action);color:var(--ink);font-weight:600}
+.compare-pick[aria-pressed=true]::before{content:'\2713'}
+@media(hover:hover){.compare-pick[aria-pressed=false]:hover{background:var(--sage)}}
+.compare-pick:active{transform:scale(.97)}
+@media(prefers-reduced-motion:reduce){.compare-pick{transition:none}.compare-pick:active{transform:none}}
