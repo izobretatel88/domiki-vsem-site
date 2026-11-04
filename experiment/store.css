@@ -458,3 +458,6 @@ dialog .dialog-header{border-bottom:0}
 #quiz-dialog .delivery-checklist .form-field input{background:var(--bg)}
 /* On phone and tablet the hero's second action kept the old on-forest colour over the light stage; it takes the ink at every width. */
 .hero-v3 .hero-stage .hero-buttons .text-button{color:var(--ink)}
+/* Process steps: the bare 46px digits become round sage badges, the same circle as the card arrows, so the four steps read as a sequence. */
+.process-list .step-number{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--sage);color:var(--ink);font-size:24px;line-height:1;margin-bottom:24px}
+@media(max-width:768px){.process-list .step-number{width:48px;height:48px;font-size:20px;margin-bottom:18px}}
