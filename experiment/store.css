@@ -415,3 +415,9 @@ dialog{border-radius:var(--store-r-lg)}
   .catalog .filter,.hero-v3 .hero-workshop-photos a>span{font-size:14px}
   .hero-v3 .hero-copy h1 span{font-size:26px}
 }
+
+/* Iteration 20: the last question still carried the old list's closing rule (a 1px line under the fourth
+   card), the one hairline left on the page. The questions are separate tiles now, so it goes. */
+.faq-list details:last-child,.faq-list details:last-of-type{border-bottom:0}
+/* On phones and tablets the three closing reasons were stretched into full-width bars; they wrap as chips. */
+@media(max-width:950px){.final-note{display:flex;flex-direction:row;flex-wrap:wrap;align-items:flex-start;gap:8px}.final-note span{width:auto;flex:0 0 auto}}
