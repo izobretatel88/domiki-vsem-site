@@ -441,3 +441,7 @@ dialog{border-radius:var(--store-r-lg)}
 .cost-base,.cost-result{border-radius:20px}
 /* On a phone the cost heading ran to three lines at 26px; the model page's section headings step down to 24 together. */
 @media(max-width:600px){#package-heading,#cost-heading,main section.related-section>h2{font-size:24px}}
+/* The model page joins the home page's scale: labels, notes and buttons 14, running text 16. */
+.breadcrumbs,.breadcrumbs a,.breadcrumbs span,.detail-specs dt,.mobile-price-summary span,.mobile-price-summary p,.mobile-price-summary .text-button,.gallery-views>span,.photo-disclosure,.package-option-delta,.detail-total>span,.detail-total>p,.detail-total .button,.detail-packages #show-cost,.detail-total p.photo-price-note,.cost-base small,.cost-intro .button,.cost-lines summary small{font-size:14px}
+.detail-text p,.cost-result p{font-size:16px}
+.mobile-price-summary{border-bottom:0}
