@@ -520,3 +520,5 @@ dialog .dialog-header{border-bottom:0}
 .production-visit-copy>span{font-size:16px;line-height:1.6;color:#d6e3da;max-width:40ch}
 .production-visit-copy .text-button{margin-top:8px}
 @media(max-width:768px){.production-visit.has-photo{grid-template-columns:1fr;gap:20px;padding:12px 12px 24px}.production-visit-copy{padding:0 8px}.production-visit.has-photo .production-visit-copy>p{font-size:21px}}
+/* Fix: outline buttons on hover took the dark fill of the main buttons but kept dark text, so the label vanished. Now they invert fully. */
+@media(hover:hover){.button.outline:hover{background:var(--action);border-color:var(--action);color:var(--action-ink)}}
