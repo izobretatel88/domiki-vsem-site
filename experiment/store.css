@@ -407,3 +407,11 @@ dialog{border-radius:var(--store-r-lg)}
 .model-inclusions summary:after{content:'+';display:inline-block;transition:transform 200ms cubic-bezier(.23,1,.32,1)}
 .model-inclusions[open] summary:after{content:'+';transform:rotate(45deg)}
 @media(prefers-reduced-motion:reduce){.model-inclusions summary:after{transition:none}}
+
+/* Iteration 19: three stray sizes on phones and tablets. The category filters and the workshop captions
+   sat at 13px, one step below the 14px floor every other label uses, and the hero's second line was an
+   em-derived 27.4px, a hair from the 26px section headings. They now join the scale (14 and 26). */
+@media(max-width:950px){
+  .catalog .filter,.hero-v3 .hero-workshop-photos a>span{font-size:14px}
+  .hero-v3 .hero-copy h1 span{font-size:26px}
+}
