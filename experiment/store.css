@@ -451,3 +451,8 @@ dialog{border-radius:var(--store-r-lg)}
 .gallery-arrow{width:44px;height:44px}
 /* The house finder joins the 14px floor: step label, field labels, delivery notes, the demo note and the action button. */
 #quiz-dialog :is(.quiz-step-label,.field-label,.quiz-demo,.field-help,.delivery-options>p,.delivery-options summary small,.delivery-field>span,.quiz-actions .button,.preview-house small,.preview-note,.contact-summary>*,.contact-tabs .filter,.form-field>span,.form-field small){font-size:14px}
+/* Dialogs lose their last hairlines: the header and action rows separate by space, the delivery checklist becomes a tile like the cost lines. */
+dialog .dialog-header{border-bottom:0}
+#quiz-dialog .quiz-actions{border-top:0}
+#quiz-dialog .delivery-checklist{border:0;border-radius:20px;background:var(--store-tile);padding:14px 20px}
+#quiz-dialog .delivery-checklist .form-field input{background:var(--bg)}
