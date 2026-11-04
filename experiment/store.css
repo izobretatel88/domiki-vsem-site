@@ -461,3 +461,5 @@ dialog .dialog-header{border-bottom:0}
 /* Process steps: the bare 46px digits become round sage badges, the same circle as the card arrows, so the four steps read as a sequence. */
 .process-list .step-number{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--sage);color:var(--ink);font-size:24px;line-height:1;margin-bottom:24px}
 @media(max-width:768px){.process-list .step-number{width:48px;height:48px;font-size:20px;margin-bottom:18px}}
+/* Section rhythm on desktop: the packages section joins the 72px of its neighbours (it left a ~190px gap after the catalogue); the dark production field keeps more air inside, 96. */
+@media(min-width:951px){.packages-section{padding-top:72px;padding-bottom:72px}.production-section{padding-top:96px;padding-bottom:96px}}
