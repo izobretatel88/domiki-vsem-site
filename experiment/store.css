@@ -463,3 +463,5 @@ dialog .dialog-header{border-bottom:0}
 @media(max-width:768px){.process-list .step-number{width:48px;height:48px;font-size:20px;margin-bottom:18px}}
 /* Section rhythm on desktop: the packages section joins the 72px of its neighbours (it left a ~190px gap after the catalogue); the dark production field keeps more air inside, 96. */
 @media(min-width:951px){.packages-section{padding-top:72px;padding-bottom:72px}.production-section{padding-top:96px;padding-bottom:96px}}
+/* The readiness link was capped at 230px, so its arrow fell to a line of its own; on wider screens it stays on one line. */
+@media(min-width:769px){.readiness-summary #readiness-catalog{max-width:none;white-space:nowrap;justify-self:end}}
