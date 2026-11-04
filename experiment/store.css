@@ -383,3 +383,12 @@ dialog{border-radius:var(--store-r-lg)}
    their visible border, which is what tells a person where to type. */
 #quiz-dialog .contact-summary{border-radius:16px}
 #quiz-dialog input[type=text],#quiz-dialog input:not([type]),#quiz-dialog input[type=tel],#quiz-dialog textarea{border-radius:14px}
+
+/* Iteration 16: the phone menu was the last place still ruled with hairlines: a rule across the top and one
+   under every link. The links are now soft tiles at 16px, the rules are gone, and the menu's action button
+   reads at the same 16px as every other button on the phone. */
+.mobile-nav{border-top:0;gap:8px}
+.mobile-nav a{border-bottom:0;border-radius:16px;background:var(--store-tile);padding:12px 16px;font-size:16px;font-weight:500;display:flex;align-items:center;transition:background-color 160ms ease,transform 160ms cubic-bezier(.23,1,.32,1)}
+.mobile-nav a:active{transform:scale(.97);background:var(--sage)}
+.mobile-nav .button{font-size:16px;min-height:52px;padding:12px 20px}
+@media(prefers-reduced-motion:reduce){.mobile-nav a{transition:none}.mobile-nav a:active{transform:none}}
