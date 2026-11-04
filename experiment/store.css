@@ -535,3 +535,14 @@ dialog .dialog-header{border-bottom:0}
 }
 @media(max-width:768px){.store-toolbar .catalog-options{order:2}.store-toolbar .catalog-view{order:3}}
 @media(max-width:768px){.catalog .filter-row{margin:0;padding:0 0 0 0;scroll-padding-inline:0;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent)}.catalog .filter-row .filter:last-child{margin-right:24px}}
+/* Phone catalog cards: price and its package on one line, tighter rhythm, so a card fits one screen with room for the next. */
+@media(max-width:600px){
+ #model-grid{row-gap:40px}
+ #model-grid .model-card .model-info{padding:16px 4px 0}
+ #model-grid .model-card .model-price{margin-top:10px}
+ #model-grid .model-card .model-price>div{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:10px}
+ #model-grid .model-card .model-price .price-caption{margin:0}
+ #model-grid .model-card .model-price-context{margin-top:2px}
+ #model-grid .model-card .model-inclusions{margin-top:12px}
+ #model-grid .model-card .compare-pick{margin-top:8px}
+}
