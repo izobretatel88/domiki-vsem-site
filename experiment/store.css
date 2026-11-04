@@ -449,3 +449,5 @@ dialog{border-radius:var(--store-r-lg)}
 .dialog-brand,#info-dialog .button{font-size:14px}
 .breadcrumbs a{display:inline-block;padding:11px 0;margin:-11px 0}
 .gallery-arrow{width:44px;height:44px}
+/* The house finder joins the 14px floor: step label, field labels, delivery notes, the demo note and the action button. */
+#quiz-dialog :is(.quiz-step-label,.field-label,.quiz-demo,.field-help,.delivery-options>p,.delivery-options summary small,.delivery-field>span,.quiz-actions .button,.preview-house small,.preview-note,.contact-summary>*,.contact-tabs .filter,.form-field>span,.form-field small){font-size:14px}
