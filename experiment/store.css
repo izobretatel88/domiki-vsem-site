@@ -579,3 +579,13 @@ dialog .dialog-header{border-bottom:0}
  .detail-buybar strong{font-size:18px;white-space:nowrap}
  .detail-buybar .button{flex:0 0 auto;min-height:48px;white-space:nowrap;padding:0 18px}
 }
+/* Phone footer: one column, the tagline reads as a line, the links become tappable chips; header wordmark gets a 44px target. */
+@media(max-width:600px){
+ .header .brand{min-height:44px}
+ footer .footer-top{grid-template-columns:1fr;gap:16px}
+ footer .footer-top>p{max-width:none;margin:0}
+ footer .footer-top>p br{display:none}
+ footer .footer-top>nav{flex-wrap:wrap;gap:8px;margin-top:8px}
+ footer .footer-top>nav>a,footer .footer-top>nav>.text-button{min-height:44px;padding:0 18px;border-radius:100px;background:var(--store-tile);color:var(--ink);text-decoration:none;align-items:center}
+ footer .footer-top>nav>.text-button{background:var(--action);color:var(--action-ink)}
+}
