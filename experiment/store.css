@@ -552,3 +552,12 @@ dialog .dialog-header{border-bottom:0}
  .header .brand-caption{display:block;margin:0;padding-left:12px;border-left:1px solid var(--line);max-width:8em;line-height:1.3}
  .header .brand-caption-short{display:block}
 }
+/* Phone: the three packages become one swipeable row (they were a 1000px+ column); the tour button stays on one line. */
+@media(max-width:600px){
+ #packages .package-columns{display:flex;grid-template-columns:none;gap:12px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 24px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 24px),transparent)}
+ #packages .package-columns::-webkit-scrollbar{display:none}
+ #packages .package-columns>.package-choice{flex:0 0 84%;scroll-snap-align:start}
+ #packages .package-columns>.package-choice:last-child{margin-right:24px}
+ #packages .package-columns>.reveal{opacity:1;transform:none}
+ .production-section #tour-request{white-space:nowrap;padding:0 12px;width:100%;justify-content:center}
+}
