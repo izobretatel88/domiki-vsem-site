@@ -392,3 +392,11 @@ dialog{border-radius:var(--store-r-lg)}
 .mobile-nav a:active{transform:scale(.97);background:var(--sage)}
 .mobile-nav .button{font-size:16px;min-height:52px;padding:12px 20px}
 @media(prefers-reduced-motion:reduce){.mobile-nav a{transition:none}.mobile-nav a:active{transform:none}}
+
+/* Iteration 17: an opened «Что входит в цену» left its answer floating on the white below a closed-looking
+   pill. Open, the pill and its answer become one tile with the answer inset, so it reads as one thing that
+   unfolded. The card title links get a 44px tap height without moving the layout. */
+.model-inclusions[open]{background:var(--store-tile);border-radius:24px;padding:0}
+.model-inclusions[open] summary{background:transparent}
+.model-inclusions[open]>div{padding:0 16px 16px}
+.model-card h3 a{display:inline-block;padding:9px 0;margin:-9px 0}
