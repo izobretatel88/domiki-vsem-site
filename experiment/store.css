@@ -561,3 +561,12 @@ dialog .dialog-header{border-bottom:0}
  #packages .package-columns>.reveal{opacity:1;transform:none}
  .production-section #tour-request{white-space:nowrap;padding:0 12px;width:100%;justify-content:center}
 }
+/* Phone quiz: the step's actions stay pinned to the bottom of the dialog, so the next step is always one thumb away. */
+@media(max-width:600px){
+ #quiz-dialog #quiz-content .quiz-actions{position:sticky;bottom:0;z-index:2;flex-direction:row;align-items:center;justify-content:space-between;gap:12px;margin:16px -22px -26px;padding:12px 22px calc(12px + env(safe-area-inset-bottom,0px));background:var(--surface);box-shadow:0 -1px 0 var(--line)}
+ #quiz-dialog #quiz-content .quiz-actions .button{flex:1 1 auto;justify-content:center;padding-left:16px;padding-right:16px;min-height:48px}
+ #quiz-dialog #quiz-content .quiz-actions .text-button{flex:0 0 auto;min-height:44px}
+}
+@media(max-width:600px){#quiz-dialog #quiz-content .quiz-actions{gap:8px;padding-left:16px;padding-right:16px}#quiz-dialog #quiz-content .quiz-actions .button{white-space:nowrap;padding-left:10px;padding-right:10px}}
+@media(max-width:600px){#quiz-dialog #quiz-content .quiz-actions .text-button{flex:0 1 auto;min-width:0;white-space:normal;text-align:left;line-height:1.3}#quiz-dialog #quiz-content .quiz-actions .button{flex:1 0 auto}}
+@media(max-width:600px){#quiz-dialog #quiz-content .quiz-actions{display:grid;grid-template-columns:minmax(0,1fr) auto}#quiz-dialog #quiz-content .quiz-actions>*{flex:none}}
