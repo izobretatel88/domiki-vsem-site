@@ -421,3 +421,23 @@ dialog{border-radius:var(--store-r-lg)}
 .faq-list details:last-child,.faq-list details:last-of-type{border-bottom:0}
 /* On phones and tablets the three closing reasons were stretched into full-width bars; they wrap as chips. */
 @media(max-width:950px){.final-note{display:flex;flex-direction:row;flex-wrap:wrap;align-items:flex-start;gap:8px}.final-note span{width:auto;flex:0 0 auto}}
+
+/* Iteration 23: the model page (#house-N) had not been brought into the store language: its edition choices,
+   the cost lines and the section edges were still separated by 1px rules. The choices are now soft tiles with
+   the same chosen state as the packages on the home page, the cost lines are tiles like the questions, and
+   the rules between blocks give way to space. */
+.package-option{border:0;border-radius:20px;background:var(--store-tile);padding:18px 20px;margin-bottom:8px;transition:background-color 160ms ease,box-shadow 160ms ease}
+.package-option.selected,.package-option[aria-pressed=true]{background:var(--sage);box-shadow:inset 0 0 0 2px var(--action)}
+@media(hover:hover){.package-option:not(.selected):hover{background:var(--sage)}}
+.detail-specs{border-bottom:0}
+.detail-total{border-top:0;padding-top:8px}
+.cost-breakdown,.related-section{border-top:0}
+.cost-lines details{border:0;border-radius:20px;background:var(--store-tile);padding:18px 24px;margin-bottom:8px}
+@media(prefers-reduced-motion:reduce){.package-option{transition:none}}
+/* The model page's square leftovers: gallery, thumbnails, the price note and the cost totals round with the rest. */
+.gallery-main{border-radius:var(--store-r);overflow:hidden}
+.gallery-thumb{border-radius:14px;overflow:hidden}
+.photo-price-note{border-radius:16px}
+.cost-base,.cost-result{border-radius:20px}
+/* On a phone the cost heading ran to three lines at 26px; the model page's section headings step down to 24 together. */
+@media(max-width:600px){#package-heading,#cost-heading,main section.related-section>h2{font-size:24px}}
