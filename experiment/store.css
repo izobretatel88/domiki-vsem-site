@@ -456,3 +456,5 @@ dialog .dialog-header{border-bottom:0}
 #quiz-dialog .quiz-actions{border-top:0}
 #quiz-dialog .delivery-checklist{border:0;border-radius:20px;background:var(--store-tile);padding:14px 20px}
 #quiz-dialog .delivery-checklist .form-field input{background:var(--bg)}
+/* On phone and tablet the hero's second action kept the old on-forest colour over the light stage; it takes the ink at every width. */
+.hero-v3 .hero-stage .hero-buttons .text-button{color:var(--ink)}
