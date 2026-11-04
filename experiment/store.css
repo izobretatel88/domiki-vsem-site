@@ -471,3 +471,16 @@ dialog .dialog-header{border-bottom:0}
 @media(hover:hover){.gallery-views button[aria-pressed=false]:hover{background:var(--sage)}}
 .gallery-views button:active{transform:scale(.97)}
 @media(prefers-reduced-motion:reduce){.gallery-views button{transition:none}.gallery-views button:active{transform:none}}
+/* The comparison table: 12px text and hairline rows become 14/16 type on alternating rounded tile rows. */
+.house-comparison-table caption,.house-comparison-table thead th .text-button,.house-comparison-table tbody th,.house-comparison-table tbody td,.house-comparison-table .comparison-plan span{font-size:14px}
+.house-comparison-table tbody td strong{font-size:16px}
+.house-comparison-table{border-collapse:separate;border-spacing:0}
+.house-comparison-table th,.house-comparison-table td{border:0}
+.house-comparison-table tbody tr:nth-child(odd)>*{background:var(--store-tile)}
+.house-comparison-table tbody tr>:first-child{border-radius:14px 0 0 14px}
+.house-comparison-table tbody tr>:last-child{border-radius:0 14px 14px 0}
+.house-comparison{border-top:0}
+.house-comparison-table thead tr,.house-comparison-table thead tr:nth-last-child(-n+3){background:none}
+.house-comparison-table th,.house-comparison-table td{overflow-wrap:normal;hyphens:auto;padding:14px 10px}
+.house-comparison-table tbody tr>:first-child{padding-left:14px}
+@media(max-width:600px){.house-comparison-table thead td{width:32%}}
