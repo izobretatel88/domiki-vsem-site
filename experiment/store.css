@@ -400,3 +400,10 @@ dialog{border-radius:var(--store-r-lg)}
 .model-inclusions[open] summary{background:transparent}
 .model-inclusions[open]>div{padding:0 16px 16px}
 .model-card h3 a{display:inline-block;padding:9px 0;margin:-9px 0}
+
+/* Iteration 18: the catalogue's «Что входит в цену» swapped its plus for a minus while the questions turn
+   theirs into a cross; both disclosures now behave the same way. Keyboard focus was audited in both themes:
+   every focusable element shows a ring of at least 3:1 against its ground, so nothing changes there. */
+.model-inclusions summary:after{content:'+';display:inline-block;transition:transform 200ms cubic-bezier(.23,1,.32,1)}
+.model-inclusions[open] summary:after{content:'+';transform:rotate(45deg)}
+@media(prefers-reduced-motion:reduce){.model-inclusions summary:after{transition:none}}
