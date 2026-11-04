@@ -522,3 +522,16 @@ dialog .dialog-header{border-bottom:0}
 @media(max-width:768px){.production-visit.has-photo{grid-template-columns:1fr;gap:20px;padding:12px 12px 24px}.production-visit-copy{padding:0 8px}.production-visit.has-photo .production-visit-copy>p{font-size:21px}}
 /* Fix: outline buttons on hover took the dark fill of the main buttons but kept dark text, so the label vanished. Now they invert fully. */
 @media(hover:hover){.button.outline:hover{background:var(--action);border-color:var(--action);color:var(--action-ink)}}
+/* Catalog filters: house type and area are chips; on a phone each set is one swipeable row so the houses show sooner. */
+.area-chips{display:flex;gap:8px}
+.area-chips .filter{min-height:44px;padding:8px 16px;white-space:nowrap}
+@media(max-width:768px){
+ .store-toolbar .catalog-controls,.store-toolbar .catalog-options{width:100%;min-width:0}
+ .catalog .filter-row{display:flex;flex-wrap:nowrap;gap:8px;width:auto;margin:0 -20px;padding:0 20px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scroll-padding-inline:20px;scrollbar-width:none}
+ .catalog .filter-row::-webkit-scrollbar{display:none}
+ .catalog .filter-row .filter{flex:0 0 auto;white-space:nowrap;text-align:center;padding:10px 16px;scroll-snap-align:start}
+ .catalog .store-toolbar .area-filter{display:block;min-width:0}
+ .store-toolbar #area-filter-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+}
+@media(max-width:768px){.store-toolbar .catalog-options{order:2}.store-toolbar .catalog-view{order:3}}
+@media(max-width:768px){.catalog .filter-row{margin:0;padding:0 0 0 0;scroll-padding-inline:0;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent)}.catalog .filter-row .filter:last-child{margin-right:24px}}
