@@ -511,3 +511,12 @@ dialog .dialog-header{border-bottom:0}
 @media(hover:hover){.production-section .production-visit .text-button:hover{background:#ffffff}}
 .production-section .production-visit .text-button:active{transform:scale(.97)}
 @media(prefers-reduced-motion:reduce){.production-section .production-visit .text-button{transition:none}.production-section .production-visit .text-button:active{transform:none}}
+/* Showroom photo: the factory-visit invitation shows the display houses that stand at the production site. */
+.production-visit.has-photo{display:grid;grid-template-columns:1.25fr 1fr;align-items:center;gap:40px;padding:16px 40px 16px 16px}
+.production-visit-photo{margin:0;border-radius:20px;overflow:hidden;aspect-ratio:4/3}
+.production-visit-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.production-visit-copy{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.production-visit.has-photo .production-visit-copy>p{font-family:var(--display);font-size:24px;line-height:1.25;color:#ffffff;margin:0}
+.production-visit-copy>span{font-size:16px;line-height:1.6;color:#d6e3da;max-width:40ch}
+.production-visit-copy .text-button{margin-top:8px}
+@media(max-width:768px){.production-visit.has-photo{grid-template-columns:1fr;gap:20px;padding:12px 12px 24px}.production-visit-copy{padding:0 8px}.production-visit.has-photo .production-visit-copy>p{font-size:21px}}
