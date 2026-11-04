@@ -546,3 +546,9 @@ dialog .dialog-header{border-bottom:0}
  #model-grid .model-card .model-inclusions{margin-top:12px}
  #model-grid .model-card .compare-pick{margin-top:8px}
 }
+/* Phone header: the caption sits beside the wordmark (as on desktop), so the sticky header is one row instead of two. */
+@media(max-width:600px){
+ .header .brand{display:flex;flex-direction:row;align-items:center;gap:12px}
+ .header .brand-caption{display:block;margin:0;padding-left:12px;border-left:1px solid var(--line);max-width:8em;line-height:1.3}
+ .header .brand-caption-short{display:block}
+}
