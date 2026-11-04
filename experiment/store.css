@@ -506,3 +506,8 @@ dialog .dialog-header{border-bottom:0}
 @media(hover:hover){.production-section .production-tab:not(.active):hover{background:rgba(248,248,239,.12)}}
 .production-section .production-tab:active{transform:scale(.98)}
 @media(prefers-reduced-motion:reduce){.production-section .production-tab{transition:none}.production-section .production-tab:active{transform:none}}
+/* Iteration 38: the factory-visit invitation is a real action, so it is a light pill on the dark field instead of an underlined link. */
+.production-section .production-visit .text-button{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border-radius:100px;background:var(--sage);color:#183a25;text-decoration:none;font-weight:600;transition:background-color 160ms ease,transform 160ms ease}
+@media(hover:hover){.production-section .production-visit .text-button:hover{background:#ffffff}}
+.production-section .production-visit .text-button:active{transform:scale(.97)}
+@media(prefers-reduced-motion:reduce){.production-section .production-visit .text-button{transition:none}.production-section .production-visit .text-button:active{transform:none}}
